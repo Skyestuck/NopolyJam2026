@@ -13,4 +13,6 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = input * SPEED
 	
+	print("x=", x, " y=", y, " vel=", velocity)
+	
 	move_and_slide()
