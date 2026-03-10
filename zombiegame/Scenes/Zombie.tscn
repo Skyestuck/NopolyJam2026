@@ -16,11 +16,10 @@ radius = 83.02409
 [node name="ZombieCollision" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1667603871]
 shape = SubResource("CapsuleShape2D_h15oy")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1085534428]
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=831160038]
 texture_filter = 1
 texture = ExtResource("1_4ru28")
+hframes = 4
 
 [node name="TerrorRadius" type="Area2D" parent="." unique_id=317457017]
 
