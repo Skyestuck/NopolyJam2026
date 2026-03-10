@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d11rwt27aupet"]
 
 [ext_resource type="Texture2D" uid="uid://dgc3sqwvnvwo1" path="res://Sprites/Zombie2.png" id="1_4ru28"]
+[ext_resource type="Script" uid="uid://qumn0lli6qdt" path="res://Scripts/ZombieCharacter.gd" id="2_yf4vm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h15oy"]
 radius = 7.0
@@ -12,6 +13,7 @@ radius = 83.02409
 [node name="Zombie" type="Node2D" unique_id=180360345]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=874606456]
+script = ExtResource("2_yf4vm")
 
 [node name="ZombieCollision" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1667603871]
 shape = SubResource("CapsuleShape2D_h15oy")
