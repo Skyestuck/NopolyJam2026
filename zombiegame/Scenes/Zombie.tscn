@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d11rwt27aupet"]
+
+[ext_resource type="Texture2D" uid="uid://dgc3sqwvnvwo1" path="res://Sprites/Zombie2.png" id="1_4ru28"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h15oy"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf4vm"]
+radius = 83.02409
+
+[node name="Zombie" type="Node2D" unique_id=180360345]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=874606456]
+
+[node name="ZombieCollision" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1667603871]
+shape = SubResource("CapsuleShape2D_h15oy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1085534428]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=831160038]
+texture_filter = 1
+texture = ExtResource("1_4ru28")
+
+[node name="TerrorRadius" type="Area2D" parent="." unique_id=317457017]
+
+[node name="TerrorRadiusShape" type="CollisionShape2D" parent="TerrorRadius" unique_id=1092239480]
+shape = SubResource("CircleShape2D_yf4vm")
