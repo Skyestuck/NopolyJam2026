@@ -29,4 +29,5 @@ hframes = 4
 shape = SubResource("CircleShape2D_yf4vm")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1704705055]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true

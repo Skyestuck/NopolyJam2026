@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d11rwt27aupet" path="res://Scenes/Zombie.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://bginaqcbkhqu2" path="res://Sprites/icon.svg" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://crowtau4crddx" path="res://Scenes/trap.tscn" id="3_wrm1d"]
 
 [node name="Game" type="Node2D" unique_id=1650194136]
 
@@ -11,4 +12,13 @@ scale = Vector2(4.9765625, 2.8125)
 texture = ExtResource("1_qxrlw")
 
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("1_ebmjs")]
-position = Vector2(263, 176)
+position = Vector2(233, 177)
+
+[node name="Zombie2" parent="." unique_id=945697052 instance=ExtResource("1_ebmjs")]
+position = Vector2(215, 178)
+
+[node name="Zombie3" parent="." unique_id=927421618 instance=ExtResource("1_ebmjs")]
+position = Vector2(223, 195)
+
+[node name="Trap" parent="." unique_id=1560308648 instance=ExtResource("3_wrm1d")]
+position = Vector2(444, 196)
