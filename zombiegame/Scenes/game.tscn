@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://cb6ta0scg1jlw"]
 
 [ext_resource type="PackedScene" uid="uid://d11rwt27aupet" path="res://Scenes/Zombie.tscn" id="1_ebmjs"]
+[ext_resource type="Texture2D" uid="uid://bginaqcbkhqu2" path="res://Sprites/icon.svg" id="1_qxrlw"]
 
 [node name="Game" type="Node2D" unique_id=1650194136]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325232213]
+position = Vector2(320.5, 179)
+scale = Vector2(4.9765625, 2.8125)
+texture = ExtResource("1_qxrlw")
 
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("1_ebmjs")]
 position = Vector2(263, 176)
