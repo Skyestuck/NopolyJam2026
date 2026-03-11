@@ -34,18 +34,8 @@ func take_damage(amount: int) -> void:
 		print("A Zombie Died!")
 		remove_from_group("player")
 		queue_free()
-		get_tree().call_group("all players", "_on_any_player_died", self)
+		get_tree().call_group("all_players", "_on_any_player_died", self)
 
-
-func on_player_died() -> void:
-	print("Player Died!")
-	if is_queued_for_deletion(): return  # this is the dying node; skip
-	if get_tree().get_nodes_in_group("player").is_empty():
-		add_to_group("player")
-		print("I'm the player now!")
-	else:
-		print("I'm Still Detecting A Player!")
-		
 func _on_any_player_died(dead: Node) -> void:
 	if self == dead: return
 	if !is_inside_tree(): return
