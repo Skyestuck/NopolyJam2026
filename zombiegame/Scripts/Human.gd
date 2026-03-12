@@ -8,13 +8,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print("My postion is: ", position.x, position.y)
-	#pass
+	pass
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("all_players"):
-		queue_free()
-		var Zombie = ZombieScene.instantiate()
-		Zombie.position = Vector2(position.x,position.y)
-		get_parent().add_child(Zombie) # Replace with function body.
+		call_deferred("convert_to_zombie")
+
+
+func convert_to_zombie() -> void:
+	var Zombie = ZombieScene.instantiate()
+	Zombie.position = global_position
+	get_parent().add_child(Zombie)
+	queue_free()

@@ -18,12 +18,6 @@ texture = ExtResource("1_qxrlw")
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("1_ebmjs")]
 position = Vector2(233, 177)
 
-[node name="Zombie2" parent="." unique_id=945697052 instance=ExtResource("1_ebmjs")]
-position = Vector2(215, 178)
-
-[node name="Zombie3" parent="." unique_id=927421618 instance=ExtResource("1_ebmjs")]
-position = Vector2(223, 195)
-
 [node name="Trap" parent="." unique_id=1560308648 instance=ExtResource("3_wrm1d")]
 position = Vector2(444, 196)
 
