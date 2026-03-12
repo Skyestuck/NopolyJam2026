@@ -8,11 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(has_damaged)
-	if not $TrapCooldown.is_stopped(): print($TrapCooldown.time_left)
 	if $TrapCooldown.is_stopped() and has_overlapping_bodies():
-		for bodies in get_overlapping_bodies():
-			_on_body_entered(bodies)
+		for body in get_overlapping_bodies():
+			body.take_damage(1)
+		has_damaged = true
+		$TrapCooldown.start()
 
 func print_group(group_name: String) -> void:
 	var members = get_tree().get_nodes_in_group(group_name)

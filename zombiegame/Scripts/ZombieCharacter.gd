@@ -37,6 +37,9 @@ func take_damage(amount: int) -> void:
 func _on_any_player_died(dead: Node) -> void:
 	if self == dead: return
 	if !is_inside_tree(): return
+	await get_tree().process_frame
+	if !is_inside_tree() or is_queued_for_deletion():
+		return
 	if get_tree().get_nodes_in_group("player").is_empty():
 		add_to_group("player")
 		print ("I'm the player now: ", name)

@@ -14,8 +14,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Debug1"):
+		print("All Players: ",get_tree().get_nodes_in_group("all_players"))
+		print("THE Player: ",get_tree().get_nodes_in_group("player"))
+		
+	if Input.is_action_just_pressed("Action1"):
 		var Zombie = ZombieScene.instantiate()
-		Zombie.position = Vector2(randi_range(0,600),randi_range(0,300))
+		Zombie.position = get_global_mouse_position()
 		add_child(Zombie)
-	
 	#pass
