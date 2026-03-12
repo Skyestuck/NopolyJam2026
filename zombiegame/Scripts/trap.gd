@@ -8,12 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
-	if get_tree().get_nodes_in_group("player").is_empty():
-		print("Group is Empty!")
-	else:
-		print_group("player")
-		print("^ Group contains ^")
+	pass
 
 func print_group(group_name: String) -> void:
 	var members = get_tree().get_nodes_in_group(group_name)

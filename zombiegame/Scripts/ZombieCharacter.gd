@@ -5,8 +5,6 @@ extends CharacterBody2D
 @export var playerhp: int = 1
 @export var lifetime: int = 0
 
-signal died
-
 func _ready():
 	add_to_group("all_players")
 	if get_tree().get_nodes_in_group("player").is_empty():

@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://cb6ta0scg1jlw"]
 
-[ext_resource type="Script" uid="uid://b0drhk05bt447" path="res://Scenes/GameController.gd" id="1_3dryh"]
+[ext_resource type="Script" uid="uid://b0drhk05bt447" path="res://Scripts/GameController.gd" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://d11rwt27aupet" path="res://Scenes/Zombie.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://bginaqcbkhqu2" path="res://Sprites/icon.svg" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://crowtau4crddx" path="res://Scenes/trap.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://5gu5f88nwv5" path="res://Scenes/Human.tscn" id="5_wowpa"]
 
 [node name="Game" type="Node2D" unique_id=1650194136]
 script = ExtResource("1_3dryh")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1325232213]
+visible = false
 position = Vector2(320.5, 179)
 scale = Vector2(4.9765625, 2.8125)
 texture = ExtResource("1_qxrlw")
@@ -24,3 +26,15 @@ position = Vector2(223, 195)
 
 [node name="Trap" parent="." unique_id=1560308648 instance=ExtResource("3_wrm1d")]
 position = Vector2(444, 196)
+
+[node name="Human" parent="." unique_id=1231210649 instance=ExtResource("5_wowpa")]
+position = Vector2(307, 246)
+
+[node name="Human2" parent="." unique_id=1316397751 instance=ExtResource("5_wowpa")]
+position = Vector2(376, 73)
+
+[node name="Human3" parent="." unique_id=2064018051 instance=ExtResource("5_wowpa")]
+position = Vector2(77, 109)
+
+[node name="Human4" parent="." unique_id=1071904849 instance=ExtResource("5_wowpa")]
+position = Vector2(130, 283)
