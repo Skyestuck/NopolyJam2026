@@ -3,8 +3,6 @@ extends CharacterBody2D
 #Preload Zombie
 var ZombieScene := preload("res://Scenes/Zombie.tscn")
 
-
-
 #State Variables
 enum AI_Mode { IDLE, WANDER, FLEE }
 var state: AI_Mode = AI_Mode.WANDER
@@ -19,9 +17,11 @@ var wander_speed := 10.0
 @export var idle_duration_long := 2.0
 var idle_timer := 0.0
 
+var direction : Vector2 = Vector2.ZERO
 var alertness := 0.0
 const alertness_trigger := 2.0
 var flee_timer := 0.0
+var flee_speed := 20.0
 
 func _ready():
 	add_to_group("all_humans")
@@ -76,8 +76,26 @@ func idle_state(delta):
 		print("Switching to WANDER!")
 		set_state(AI_Mode.WANDER)
 
+func get_point_zombies_near(points: Array) -> Vector2:
+	if points.is_empty():
+		return Vector2.ZERO
+	var sum := Vector2.ZERO
+	var count := 0
+	
+	for p in points:
+		if is_instance_valid(p):
+			sum += p.global_position
+			count += 1
+	if count == 0: return Vector2.ZERO
+	else: return (sum / float(count))
+
+
 func flee_state(delta):
-	print("FLEEING!")
+	if not $DetectionArea.get_overlapping_bodies().is_empty():
+		direction = (global_position - get_point_zombies_near($DetectionArea.get_overlapping_bodies())).normalized()
+	print (direction)
+	velocity = direction * flee_speed
+	move_and_slide()
 	if alertness < alertness_trigger:
 		idle_timer = randf_range(idle_duration_short, idle_duration_long)
 		print("Switching to IDLE!")
