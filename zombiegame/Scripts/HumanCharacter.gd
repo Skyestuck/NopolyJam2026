@@ -10,11 +10,16 @@ enum AI_Mode { IDLE, WANDER, FLEE }
 var state: AI_Mode = AI_Mode.WANDER
 
 var wander_direction := Vector2.ZERO
+const wander_duration_short := 1.0
+const wander_duration_long := 3.0
 var wander_timer := 0.0
 var wander_speed := 10.0
 
+const idle_duration_short := 1.0
+const idle_duration_long := 2.0
 var idle_timer := 0.0
 
+var alertness := 0.0
 var flee_timer := 0.0
 
 func _physics_process(delta: float) -> void:
@@ -43,7 +48,7 @@ func set_state(new_state: AI_Mode):
 func wander_state(delta):
 	wander_timer -= delta
 	if wander_timer <= 0:
-		idle_timer = randf_range(1.0, 2.0)
+		idle_timer = randf_range(idle_duration_short, idle_duration_long)
 		print("Switching to IDLE!")
 		set_state(AI_Mode.IDLE)
 		return
@@ -56,7 +61,7 @@ func idle_state(delta):
 	move_and_slide()
 	if idle_timer <= 0:
 		wander_direction = Vector2(randf() * 2 - 1, randf() * 2 - 1).normalized()
-		wander_timer = randf_range(1.0, 3.0)
+		wander_timer = randf_range(wander_duration_short, wander_duration_long)
 		print("Switching to WANDER!")
 		set_state(AI_Mode.WANDER)
 
