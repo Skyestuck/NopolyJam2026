@@ -10,16 +10,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if $TrapCooldown.is_stopped() and has_overlapping_bodies():
 		for body in get_overlapping_bodies():
-			body.take_damage(1)
-		has_damaged = true
-		$TrapCooldown.start()
+			if body.is_in_group("all_players"):
+				body.take_damage(1)
+				has_damaged = true
+				$TrapCooldown.start()
 
 func print_group(group_name: String) -> void:
 	var members = get_tree().get_nodes_in_group(group_name)
 	for node in members:
 		print(node)  # prints the node reference
-
-
 
 
 func _on_body_entered(body: Node2D) -> void:

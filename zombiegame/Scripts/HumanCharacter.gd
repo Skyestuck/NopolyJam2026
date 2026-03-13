@@ -10,17 +10,21 @@ enum AI_Mode { IDLE, WANDER, FLEE }
 var state: AI_Mode = AI_Mode.WANDER
 
 var wander_direction := Vector2.ZERO
-const wander_duration_short := 1.0
-const wander_duration_long := 3.0
+@export var wander_duration_short := 1.0
+@export var wander_duration_long := 3.0
 var wander_timer := 0.0
 var wander_speed := 10.0
 
-const idle_duration_short := 1.0
-const idle_duration_long := 2.0
+@export var idle_duration_short := 1.0
+@export var idle_duration_long := 2.0
 var idle_timer := 0.0
 
 var alertness := 0.0
+const alertness_trigger := 2.0
 var flee_timer := 0.0
+
+func _ready():
+	add_to_group("all_humans")
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -30,6 +34,8 @@ func _physics_process(delta: float) -> void:
 			wander_state(delta)
 		AI_Mode.FLEE:
 			flee_state(delta)
+	if not alertness <= 0.0:
+		alertness -= delta
 	move_and_slide()
 
 func _on_body_entered(body: Node2D) -> void:
@@ -41,6 +47,11 @@ func convert_to_zombie() -> void:
 	Zombie.position = global_position
 	get_parent().add_child(Zombie)
 	queue_free()
+
+func get_terror(delta) -> void:
+	alertness += delta*2
+	if alertness >= alertness_trigger:
+		set_state(AI_Mode.FLEE)
 
 func set_state(new_state: AI_Mode):
 	state = new_state
@@ -66,4 +77,8 @@ func idle_state(delta):
 		set_state(AI_Mode.WANDER)
 
 func flee_state(delta):
-	pass
+	print("FLEEING!")
+	if alertness < alertness_trigger:
+		idle_timer = randf_range(idle_duration_short, idle_duration_long)
+		print("Switching to IDLE!")
+		set_state(AI_Mode.IDLE)

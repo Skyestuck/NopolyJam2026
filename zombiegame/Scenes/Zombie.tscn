@@ -2,10 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dgc3sqwvnvwo1" path="res://Sprites/Zombie2.png" id="1_4ru28"]
 [ext_resource type="Script" uid="uid://qumn0lli6qdt" path="res://Scripts/ZombieCharacter.gd" id="2_yf4vm"]
+[ext_resource type="Script" uid="uid://ds08sd485wbu5" path="res://Scripts/terror_radius.gd" id="3_yf4vm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h15oy"]
-radius = 7.0
-height = 18.0
+radius = 5.0
+height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf4vm"]
 radius = 83.02409
@@ -15,15 +16,18 @@ radius = 83.02409
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=874606456]
 script = ExtResource("2_yf4vm")
 
-[node name="ZombieCollision" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1667603871]
-shape = SubResource("CapsuleShape2D_h15oy")
-
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=831160038]
 texture_filter = 1
 texture = ExtResource("1_4ru28")
 hframes = 4
 
+[node name="ZombieCollision" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1667603871]
+shape = SubResource("CapsuleShape2D_h15oy")
+
 [node name="TerrorRadius" type="Area2D" parent="CharacterBody2D" unique_id=317457017]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_yf4vm")
 
 [node name="TerrorRadiusShape" type="CollisionShape2D" parent="CharacterBody2D/TerrorRadius" unique_id=1092239480]
 shape = SubResource("CircleShape2D_yf4vm")
@@ -31,3 +35,5 @@ shape = SubResource("CircleShape2D_yf4vm")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1704705055]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[connection signal="body_entered" from="CharacterBody2D/TerrorRadius" to="CharacterBody2D/TerrorRadius" method="_on_body_entered"]

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b5gx2eeh0xq8j" path="res://Scripts/HumanCharacter.gd" id="1_t8tqr"]
 [ext_resource type="Texture2D" uid="uid://cva6sdljaysk8" path="res://Sprites/Human.png" id="1_uf8j7"]
-[ext_resource type="Script" uid="uid://jirg252yhify" path="res://Scenes/conversion_area.gd" id="2_t8tqr"]
+[ext_resource type="Script" uid="uid://jirg252yhify" path="res://Scripts/conversion_area.gd" id="2_t8tqr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lr0no"]
 radius = 6.0
-height = 18.0
+height = 16.0
 
 [sub_resource type="GDScript" id="GDScript_t8tqr"]
 script/source = "extends CollisionShape2D
@@ -24,17 +24,19 @@ func _process(delta: float) -> void:
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t8tqr"]
 radius = 6.0
-height = 18.0
+height = 16.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=582231648]
+[node name="Human" type="CharacterBody2D" unique_id=582231648]
+collision_layer = 2
+collision_mask = 254
 script = ExtResource("1_t8tqr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=720607101]
 shape = SubResource("CapsuleShape2D_lr0no")
-disabled = true
 script = SubResource("GDScript_t8tqr")
 
 [node name="ConversionArea" type="Area2D" parent="." unique_id=1231210649]
+collision_layer = 0
 script = ExtResource("2_t8tqr")
 
 [node name="Sprite2D" type="Sprite2D" parent="ConversionArea" unique_id=580551191]

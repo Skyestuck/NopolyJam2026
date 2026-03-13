@@ -7,6 +7,8 @@
 size = Vector2(118, 120)
 
 [node name="Trap" type="Area2D" unique_id=1560308648]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_xmcxk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1596678624]
