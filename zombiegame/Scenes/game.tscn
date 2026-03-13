@@ -24,11 +24,11 @@ position = Vector2(444, 196)
 [node name="Human" parent="." unique_id=1231210649 instance=ExtResource("5_wowpa")]
 position = Vector2(307, 246)
 
-[node name="Human2" parent="." unique_id=1316397751 instance=ExtResource("5_wowpa")]
-position = Vector2(376, 73)
+[node name="CharacterBody2D" parent="." unique_id=582231648 instance=ExtResource("5_wowpa")]
+position = Vector2(178, 273)
 
-[node name="Human3" parent="." unique_id=2064018051 instance=ExtResource("5_wowpa")]
-position = Vector2(77, 109)
+[node name="CharacterBody2D2" parent="." unique_id=67644457 instance=ExtResource("5_wowpa")]
+position = Vector2(83, 141)
 
-[node name="Human4" parent="." unique_id=1071904849 instance=ExtResource("5_wowpa")]
-position = Vector2(130, 283)
+[node name="CharacterBody2D3" parent="." unique_id=612721866 instance=ExtResource("5_wowpa")]
+position = Vector2(280, 76)
