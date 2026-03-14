@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var SPEED = 60.0
 @export var playerhp: int = 1
 @export var lifetime: int = 0
+var direction := Vector2.ZERO
+
+var wander_timer := 0.0
+var wander_pause := 0.0
 
 func _ready():
 	add_to_group("all_players")
@@ -23,7 +27,35 @@ func _physics_process(delta: float) -> void:
 		
 		move_and_slide()
 	else:
-		pass
+		if $TerrorRadius.has_overlapping_bodies():
+			direction = (get_nearest_human($TerrorRadius.get_overlapping_bodies(), global_position) - global_position).normalized()
+			velocity = direction * SPEED
+		else:
+			#wander
+			if wander_pause > 0:
+				wander_pause -= delta
+			if wander_pause <= 0: 
+				wander_timer -= delta
+			if wander_timer <= 0 and wander_pause <= 0:
+				wander_timer = randf_range(1.0, 3.0)
+				direction = Vector2(randf() * 2 - 1, randf() * 2 - 1).normalized()
+				wander_pause = randf_range(1.0, 2.0)
+			elif wander_pause >= 0:
+				direction = Vector2.ZERO
+			velocity = direction * SPEED
+		move_and_slide()
+
+
+func get_nearest_human(humans: Array[Node2D], me: Vector2) -> Vector2:
+	var nearest:= Vector2.ZERO
+	var nearest_dist := INF
+	for human in humans:
+		var pos := human.global_position
+		var d = me.distance_to(pos)
+		if d < nearest_dist:
+			nearest_dist = d
+			nearest = pos
+	return nearest
 
 func take_damage(amount: int) -> void:
 	playerhp -= amount

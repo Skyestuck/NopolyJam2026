@@ -26,3 +26,24 @@ position = Vector2(165, 164)
 
 [node name="Human" parent="." unique_id=582231648 instance=ExtResource("5_wowpa")]
 position = Vector2(343, 207)
+
+[node name="Human2" parent="." unique_id=2097235887 instance=ExtResource("5_wowpa")]
+position = Vector2(343, 83)
+
+[node name="Human3" parent="." unique_id=2041110576 instance=ExtResource("5_wowpa")]
+position = Vector2(166, 331)
+
+[node name="Human4" parent="." unique_id=936977689 instance=ExtResource("5_wowpa")]
+position = Vector2(305, 321)
+
+[node name="Human5" parent="." unique_id=1413131886 instance=ExtResource("5_wowpa")]
+position = Vector2(39, 284)
+
+[node name="Human6" parent="." unique_id=765361985 instance=ExtResource("5_wowpa")]
+position = Vector2(53, 51)
+
+[node name="Human7" parent="." unique_id=1120125557 instance=ExtResource("5_wowpa")]
+position = Vector2(196, 35)
+
+[node name="Human8" parent="." unique_id=1782321297 instance=ExtResource("5_wowpa")]
+position = Vector2(48, 184)

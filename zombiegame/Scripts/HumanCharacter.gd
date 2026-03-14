@@ -19,7 +19,7 @@ var idle_timer := 0.0
 
 var direction : Vector2 = Vector2.ZERO
 var alertness := 0.0
-const alertness_trigger := 2.0
+const alertness_trigger := 1.0
 var flee_timer := 0.0
 var flee_speed := 20.0
 
