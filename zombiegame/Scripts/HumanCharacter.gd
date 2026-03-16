@@ -73,7 +73,7 @@ func idle_state(delta):
 	if idle_timer <= 0:
 		wander_direction = Vector2(randf() * 2 - 1, randf() * 2 - 1).normalized()
 		wander_timer = randf_range(wander_duration_short, wander_duration_long)
-		print("Switching to WANDER!")
+		#print("Switching to WANDER!")
 		set_state(AI_Mode.WANDER)
 
 func get_point_zombies_near(points: Array) -> Vector2:
@@ -98,5 +98,5 @@ func flee_state(delta):
 	move_and_slide()
 	if alertness < alertness_trigger:
 		idle_timer = randf_range(idle_duration_short, idle_duration_long)
-		print("Switching to IDLE!")
+		#print("Switching to IDLE!")
 		set_state(AI_Mode.IDLE)

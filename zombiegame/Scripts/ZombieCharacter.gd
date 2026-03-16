@@ -2,12 +2,14 @@ extends CharacterBody2D
 
 
 @export var SPEED = 60.0
+var default_speed = SPEED
 @export var playerhp: int = 1
 @export var lifetime: int = 0
 var direction := Vector2.ZERO
 
 var wander_timer := 0.0
 var wander_pause := 0.0
+var wander_slowdown := 0.5 #wander at 50% speed
 
 func _ready():
 	add_to_group("all_players")
@@ -32,17 +34,19 @@ func _physics_process(delta: float) -> void:
 			velocity = direction * SPEED
 		else:
 			#wander
-			if wander_pause > 0:
-				wander_pause -= delta
-			if wander_pause <= 0: 
-				wander_timer -= delta
-			if wander_timer <= 0 and wander_pause <= 0:
-				wander_timer = randf_range(1.0, 3.0)
+			print ("Wander: ", wander_timer, " Pause: ", wander_pause)
+			print ("Direction: ", direction)
+			if wander_timer <= 0: #wander is empty
+				wander_timer = randf_range(3.0, 5.0)
+				wander_pause = randf_range(1.0, 3.0)
 				direction = Vector2(randf() * 2 - 1, randf() * 2 - 1).normalized()
-				wander_pause = randf_range(1.0, 2.0)
-			elif wander_pause >= 0:
-				direction = Vector2.ZERO
-			velocity = direction * SPEED
+			if not wander_pause <= 0: #pause is not emtpy
+				SPEED = 0.0
+				wander_pause -= delta
+			elif wander_pause <= 0:
+				SPEED = default_speed
+				wander_timer -= delta
+			velocity = direction * (SPEED * wander_slowdown)
 		move_and_slide()
 
 

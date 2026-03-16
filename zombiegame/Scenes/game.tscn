@@ -16,34 +16,28 @@ scale = Vector2(4.9765625, 2.8125)
 texture = ExtResource("1_qxrlw")
 
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("1_ebmjs")]
-position = Vector2(233, 177)
+position = Vector2(181, 243)
 
 [node name="Trap" parent="." unique_id=1560308648 instance=ExtResource("3_wrm1d")]
 position = Vector2(444, 196)
 
 [node name="Zombie2" parent="." unique_id=682066814 instance=ExtResource("1_ebmjs")]
-position = Vector2(165, 164)
+position = Vector2(81, 163)
 
 [node name="Human" parent="." unique_id=582231648 instance=ExtResource("5_wowpa")]
 position = Vector2(343, 207)
 
-[node name="Human2" parent="." unique_id=2097235887 instance=ExtResource("5_wowpa")]
-position = Vector2(343, 83)
+[node name="Human2" parent="." unique_id=1035258841 instance=ExtResource("5_wowpa")]
+position = Vector2(299, 67)
 
-[node name="Human3" parent="." unique_id=2041110576 instance=ExtResource("5_wowpa")]
-position = Vector2(166, 331)
+[node name="Human3" parent="." unique_id=1342398456 instance=ExtResource("5_wowpa")]
+position = Vector2(171, 22)
 
-[node name="Human4" parent="." unique_id=936977689 instance=ExtResource("5_wowpa")]
-position = Vector2(305, 321)
+[node name="Human4" parent="." unique_id=210276865 instance=ExtResource("5_wowpa")]
+position = Vector2(98, 290)
 
-[node name="Human5" parent="." unique_id=1413131886 instance=ExtResource("5_wowpa")]
-position = Vector2(39, 284)
+[node name="Human5" parent="." unique_id=1697207165 instance=ExtResource("5_wowpa")]
+position = Vector2(-9, 285)
 
-[node name="Human6" parent="." unique_id=765361985 instance=ExtResource("5_wowpa")]
-position = Vector2(53, 51)
-
-[node name="Human7" parent="." unique_id=1120125557 instance=ExtResource("5_wowpa")]
-position = Vector2(196, 35)
-
-[node name="Human8" parent="." unique_id=1782321297 instance=ExtResource("5_wowpa")]
-position = Vector2(48, 184)
+[node name="Human6" parent="." unique_id=992142197 instance=ExtResource("5_wowpa")]
+position = Vector2(-48, 117)
