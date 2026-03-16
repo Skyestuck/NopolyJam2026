@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bginaqcbkhqu2" path="res://Sprites/icon.svg" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://crowtau4crddx" path="res://Scenes/trap.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://5gu5f88nwv5" path="res://Scenes/Human.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://cn82s43l4xyey" path="res://Scenes/Building.tscn" id="6_i6g32"]
 
 [node name="Game" type="Node2D" unique_id=1650194136]
 script = ExtResource("1_3dryh")
@@ -16,28 +17,131 @@ scale = Vector2(4.9765625, 2.8125)
 texture = ExtResource("1_qxrlw")
 
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("1_ebmjs")]
-position = Vector2(181, 243)
+position = Vector2(862, 829)
 
 [node name="Trap" parent="." unique_id=1560308648 instance=ExtResource("3_wrm1d")]
-position = Vector2(444, 196)
-
-[node name="Zombie2" parent="." unique_id=682066814 instance=ExtResource("1_ebmjs")]
-position = Vector2(81, 163)
+position = Vector2(631, 373)
 
 [node name="Human" parent="." unique_id=582231648 instance=ExtResource("5_wowpa")]
-position = Vector2(343, 207)
+position = Vector2(877, 447)
 
 [node name="Human2" parent="." unique_id=1035258841 instance=ExtResource("5_wowpa")]
-position = Vector2(299, 67)
+position = Vector2(837, 275)
 
 [node name="Human3" parent="." unique_id=1342398456 instance=ExtResource("5_wowpa")]
-position = Vector2(171, 22)
+position = Vector2(883, 643)
 
 [node name="Human4" parent="." unique_id=210276865 instance=ExtResource("5_wowpa")]
-position = Vector2(98, 290)
+position = Vector2(459, 845)
 
 [node name="Human5" parent="." unique_id=1697207165 instance=ExtResource("5_wowpa")]
-position = Vector2(-9, 285)
+position = Vector2(410, 535)
 
 [node name="Human6" parent="." unique_id=992142197 instance=ExtResource("5_wowpa")]
-position = Vector2(-48, 117)
+position = Vector2(450, 284)
+
+[node name="Building" parent="." unique_id=1351275348 instance=ExtResource("6_i6g32")]
+position = Vector2(252, 242)
+
+[node name="Building2" parent="." unique_id=1866479215 instance=ExtResource("6_i6g32")]
+position = Vector2(1032, 242)
+
+[node name="Building3" parent="." unique_id=541980928 instance=ExtResource("6_i6g32")]
+position = Vector2(642, 242)
+
+[node name="Building4" parent="." unique_id=1899735280 instance=ExtResource("6_i6g32")]
+position = Vector2(252, 632)
+
+[node name="Building5" parent="." unique_id=1021348232 instance=ExtResource("6_i6g32")]
+position = Vector2(252, 1022)
+
+[node name="Building6" parent="." unique_id=440541109 instance=ExtResource("6_i6g32")]
+position = Vector2(642, 632)
+
+[node name="Building7" parent="." unique_id=1649452597 instance=ExtResource("6_i6g32")]
+position = Vector2(642, 1022)
+
+[node name="Building8" parent="." unique_id=524924870 instance=ExtResource("6_i6g32")]
+position = Vector2(1032, 632)
+
+[node name="Building9" parent="." unique_id=1387625642 instance=ExtResource("6_i6g32")]
+position = Vector2(1032, 1022)
+
+[node name="Building10" parent="." unique_id=244639957 instance=ExtResource("6_i6g32")]
+position = Vector2(-640, 640)
+scale = Vector2(10, 10)
+
+[node name="Building11" parent="." unique_id=1990804217 instance=ExtResource("6_i6g32")]
+position = Vector2(640.00006, -640)
+scale = Vector2(10, 10)
+
+[node name="Building12" parent="." unique_id=1496219171 instance=ExtResource("6_i6g32")]
+position = Vector2(1920, 640.00006)
+scale = Vector2(10, 10)
+
+[node name="Building13" parent="." unique_id=1024993131 instance=ExtResource("6_i6g32")]
+position = Vector2(640, 1920)
+scale = Vector2(10, 10)
+
+[node name="Human7" parent="." unique_id=1321823013 instance=ExtResource("5_wowpa")]
+position = Vector2(1230, 1224)
+
+[node name="Human8" parent="." unique_id=2084170476 instance=ExtResource("5_wowpa")]
+position = Vector2(1189, 1208)
+
+[node name="Human9" parent="." unique_id=39377018 instance=ExtResource("5_wowpa")]
+position = Vector2(1236, 1174)
+
+[node name="Human10" parent="." unique_id=1955579177 instance=ExtResource("5_wowpa")]
+position = Vector2(1198, 1246)
+
+[node name="Human11" parent="." unique_id=2116587696 instance=ExtResource("5_wowpa")]
+position = Vector2(1208, 1178)
+
+[node name="Human12" parent="." unique_id=2055029496 instance=ExtResource("5_wowpa")]
+position = Vector2(111, 1181)
+
+[node name="Human13" parent="." unique_id=2018898229 instance=ExtResource("5_wowpa")]
+position = Vector2(188, 1226)
+
+[node name="Human14" parent="." unique_id=1071282310 instance=ExtResource("5_wowpa")]
+position = Vector2(170, 1164)
+
+[node name="Human15" parent="." unique_id=1499620247 instance=ExtResource("5_wowpa")]
+position = Vector2(138, 1226)
+
+[node name="Human16" parent="." unique_id=1621095583 instance=ExtResource("5_wowpa")]
+position = Vector2(130, 1138)
+
+[node name="Human17" parent="." unique_id=1080007880 instance=ExtResource("5_wowpa")]
+position = Vector2(89, 1224)
+
+[node name="Human18" parent="." unique_id=612771662 instance=ExtResource("5_wowpa")]
+position = Vector2(419, 695)
+
+[node name="Human19" parent="." unique_id=605518765 instance=ExtResource("5_wowpa")]
+position = Vector2(337, 323)
+
+[node name="Human20" parent="." unique_id=599135620 instance=ExtResource("5_wowpa")]
+position = Vector2(381, 339)
+
+[node name="Human21" parent="." unique_id=1623859178 instance=ExtResource("5_wowpa")]
+position = Vector2(372, 258)
+
+[node name="Human22" parent="." unique_id=309228504 instance=ExtResource("5_wowpa")]
+position = Vector2(233, 405)
+
+[node name="Human23" parent="." unique_id=52033554 instance=ExtResource("5_wowpa")]
+position = Vector2(246, 462)
+
+[node name="Human24" parent="." unique_id=1864575249 instance=ExtResource("5_wowpa")]
+position = Vector2(292, 429)
+
+[node name="Human25" parent="." unique_id=506217414 instance=ExtResource("5_wowpa")]
+position = Vector2(1159, 329)
+
+[node name="Human26" parent="." unique_id=1925295591 instance=ExtResource("5_wowpa")]
+position = Vector2(1100, 391)
+
+[node name="Human27" parent="." unique_id=610303242 instance=ExtResource("5_wowpa")]
+position = Vector2(981, 347)

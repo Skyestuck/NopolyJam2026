@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-
 @export var SPEED = 60.0
 var default_speed = SPEED
 @export var playerhp: int = 1
 @export var lifetime: int = 0
 var direction := Vector2.ZERO
+var sprite_facing = get_direction(direction)
 
 var wander_timer := 0.0
 var wander_pause := 0.0
@@ -24,9 +24,9 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if is_in_group("player"):
 		var input := Input.get_vector("MoveLeft","MoveRight","MoveUp","MoveDown")
+		sprite_facing = get_direction(input)
 		lifetime += 1
 		velocity = input * SPEED
-		
 		move_and_slide()
 	else:
 		if $TerrorRadius.has_overlapping_bodies():
@@ -34,8 +34,8 @@ func _physics_process(delta: float) -> void:
 			velocity = direction * SPEED
 		else:
 			#wander
-			print ("Wander: ", wander_timer, " Pause: ", wander_pause)
-			print ("Direction: ", direction)
+			#print ("Wander: ", wander_timer, " Pause: ", wander_pause)
+			#print ("Direction: ", direction)
 			if wander_timer <= 0: #wander is empty
 				wander_timer = randf_range(3.0, 5.0)
 				wander_pause = randf_range(1.0, 3.0)
@@ -47,7 +47,36 @@ func _physics_process(delta: float) -> void:
 				SPEED = default_speed
 				wander_timer -= delta
 			velocity = direction * (SPEED * wander_slowdown)
+		sprite_facing = get_direction(direction)
 		move_and_slide()
+	match sprite_facing:
+		"none":
+			$Sprite2D.frame = 0
+			#print("Setting frame for:", sprite_facing)
+		"down":
+			$Sprite2D.frame = 0
+			#print("Setting frame for:", sprite_facing)
+		"up":
+			$Sprite2D.frame = 3
+			#print("Setting frame for:", sprite_facing)
+		"left":
+			$Sprite2D.frame = 1
+			#print("Setting frame for:", sprite_facing)
+		"right":
+			$Sprite2D.frame = 2
+			#print("Setting frame for:", sprite_facing)
+
+func get_direction(vector: Vector2) -> String:
+	if vector == Vector2.ZERO: 
+		return "none"
+	if vector.x > 0 and abs(vector.x) > abs(vector.y):
+		return "right"
+	elif vector.x < 0 and abs(vector.x) > abs(vector.y):
+		return "left"
+	elif vector.y > 0:
+		return "down"
+	else:
+		return "up"
 
 
 func get_nearest_human(humans: Array[Node2D], me: Vector2) -> Vector2:

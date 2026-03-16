@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://crowtau4crddx"]
 
-[ext_resource type="Texture2D" uid="uid://bginaqcbkhqu2" path="res://Sprites/icon.svg" id="1_0juii"]
 [ext_resource type="Script" uid="uid://cece6jxohupqu" path="res://Scripts/trap.gd" id="1_xmcxk"]
+[ext_resource type="Texture2D" uid="uid://beqn5my0qvc0l" path="res://Sprites/Military.png" id="2_xmcxk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8uao8"]
-size = Vector2(118, 120)
+size = Vector2(61, 33)
 
 [node name="Trap" type="Area2D" unique_id=1560308648]
 collision_layer = 4
@@ -12,9 +12,10 @@ collision_mask = 3
 script = ExtResource("1_xmcxk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1596678624]
-texture = ExtResource("1_0juii")
+texture = ExtResource("2_xmcxk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1087205169]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_8uao8")
 
 [node name="TrapCooldown" type="Timer" parent="." unique_id=451113504]

@@ -14,6 +14,7 @@ radius = 83.02409
 [node name="Zombie" type="Node2D" unique_id=180360345]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=874606456]
+collision_mask = 253
 script = ExtResource("2_yf4vm")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=831160038]

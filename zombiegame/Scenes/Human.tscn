@@ -42,11 +42,6 @@ script = SubResource("GDScript_t8tqr")
 collision_layer = 0
 script = ExtResource("2_t8tqr")
 
-[node name="Sprite2D" type="Sprite2D" parent="ConversionArea" unique_id=580551191]
-texture = ExtResource("1_uf8j7")
-hframes = 4
-vframes = 2
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConversionArea" unique_id=966701513]
 shape = SubResource("CapsuleShape2D_t8tqr")
 
@@ -55,5 +50,13 @@ collision_layer = 0
 
 [node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea" unique_id=1692708784]
 shape = SubResource("CircleShape2D_t8tqr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1554774421]
+polygon = PackedVector2Array(0, -1, 72, 42, 58, 59, 41, 72, 21, 80, 0, 83, -21, 80, -42, 71, -58, 59, -72, 41)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=580551191]
+texture = ExtResource("1_uf8j7")
+hframes = 4
+vframes = 2
 
 [connection signal="body_entered" from="ConversionArea" to="ConversionArea" method="_on_body_entered"]
