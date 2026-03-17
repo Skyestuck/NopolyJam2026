@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://d0rr7frqqu3pn"]
+
+[ext_resource type="Script" uid="uid://b5gx2eeh0xq8j" path="res://Scripts/HumanCharacter.gd" id="1_6pi1o"]
+[ext_resource type="Script" uid="uid://bsgrw5o11fqn7" path="res://Scenes/detection_los.gd" id="3_wj52e"]
+[ext_resource type="Texture2D" uid="uid://beqn5my0qvc0l" path="res://Sprites/Military.png" id="4_6pi1o"]
+[ext_resource type="Texture2D" uid="uid://xda1cxnn2xga" path="res://Sprites/Alert.png" id="5_k3i8d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lr0no"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="GDScript" id="GDScript_t8tqr"]
+script/source = "extends CollisionShape2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8tqr"]
+radius = 142.12671
+
+[sub_resource type="GDScript" id="GDScript_y7df0"]
+script/source = "extends CollisionPolygon2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Military" type="CharacterBody2D" unique_id=582231648]
+collision_layer = 2
+collision_mask = 254
+script = ExtResource("1_6pi1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=720607101]
+shape = SubResource("CapsuleShape2D_lr0no")
+script = SubResource("GDScript_t8tqr")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=871350680]
+collision_layer = 0
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea" unique_id=1692708784]
+shape = SubResource("CircleShape2D_t8tqr")
+
+[node name="Sprite2D" type="Sprite2D" parent="DetectionArea" unique_id=781841091]
+
+[node name="DetectionLOS" type="Area2D" parent="." unique_id=1079606626]
+script = ExtResource("3_wj52e")
+
+[node name="LineOfSight" type="CollisionPolygon2D" parent="DetectionLOS" unique_id=1554774421]
+polygon = PackedVector2Array(0, 0, 83, 0, 80, 22, 72, 41, 58, 59, 41, 72, 21, 80, 0, 83, -21, 80, -42, 72, -59, 58, -72, 41, -80, 22, -83, 0)
+script = SubResource("GDScript_y7df0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=580551191]
+texture = ExtResource("4_6pi1o")
+hframes = 4
+vframes = 2
+
+[node name="Alert" type="Sprite2D" parent="." unique_id=1624557127]
+texture = ExtResource("5_k3i8d")
+offset = Vector2(0, -15)

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crowtau4crddx" path="res://Scenes/trap.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://5gu5f88nwv5" path="res://Scenes/Human.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://cn82s43l4xyey" path="res://Scenes/Building.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://d0rr7frqqu3pn" path="res://Scenes/Military.tscn" id="7_1l0tm"]
 
 [node name="Game" type="Node2D" unique_id=1650194136]
 script = ExtResource("1_3dryh")
@@ -145,3 +146,15 @@ position = Vector2(1100, 391)
 
 [node name="Human27" parent="." unique_id=610303242 instance=ExtResource("5_wowpa")]
 position = Vector2(981, 347)
+
+[node name="Military" parent="." unique_id=256509879 instance=ExtResource("7_1l0tm")]
+position = Vector2(1003, 1159)
+
+[node name="Military2" parent="." unique_id=22095729 instance=ExtResource("7_1l0tm")]
+position = Vector2(37, 1114)
+
+[node name="Military3" parent="." unique_id=122293051 instance=ExtResource("7_1l0tm")]
+position = Vector2(81, 75)
+
+[node name="Military4" parent="." unique_id=277832072 instance=ExtResource("7_1l0tm")]
+position = Vector2(1201, 73)
