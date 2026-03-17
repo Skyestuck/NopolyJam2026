@@ -29,6 +29,7 @@ var sprite_facing := "none"
 
 func _ready():
 	add_to_group("all_humans")
+	$Alert.visible = false
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -65,18 +66,22 @@ func _physics_process(delta: float) -> void:
 				"none", "down":
 					$Sprite2D.frame = 0
 					$DetectionLOS.rotation = 0
+					$Alert.visible = false
 					#print("Setting frame for:", sprite_facing)
 				"up":
 					$Sprite2D.frame = 3
 					$DetectionLOS.rotation = 180
+					$Alert.visible = false
 					#print("Setting frame for:", sprite_facing)
 				"left":
 					$Sprite2D.frame = 1
 					$DetectionLOS.rotation = 90
+					$Alert.visible = false
 					#print("Setting frame for:", sprite_facing)
 				"right":
 					$Sprite2D.frame = 2
 					$DetectionLOS.rotation = -90
+					$Alert.visible = false
 					#print("Setting frame for:", sprite_facing)
 	
 	move_and_slide()
@@ -110,6 +115,8 @@ func get_terror(delta) -> void:
 		alertness += delta*2
 	if alertness >= alertness_trigger:
 		set_state(AI_Mode.FLEE)
+		$Alert.visible = true
+
 
 func set_state(new_state: AI_Mode):
 	state = new_state

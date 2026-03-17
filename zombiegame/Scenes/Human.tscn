@@ -73,7 +73,7 @@ shape = SubResource("CircleShape2D_t8tqr")
 script = ExtResource("3_3kmkr")
 
 [node name="LineOfSight" type="CollisionPolygon2D" parent="DetectionLOS" unique_id=1554774421]
-polygon = PackedVector2Array(0, 0, 72, 42, 58, 59, 41, 72, 21, 80, 0, 83, -21, 80, -42, 71, -58, 59, -72, 41)
+polygon = PackedVector2Array(0, 0, 83, 0, 80, 22, 72, 41, 58, 59, 41, 72, 21, 80, 0, 83, -21, 80, -42, 72, -59, 58, -72, 41, -80, 22, -83, 0)
 script = SubResource("GDScript_y7df0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=580551191]
