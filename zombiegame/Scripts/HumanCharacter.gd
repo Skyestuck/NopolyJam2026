@@ -105,9 +105,14 @@ func _on_body_entered(body: Node2D) -> void:
 		call_deferred("convert_to_zombie")
 
 func convert_to_zombie() -> void:
-	var Zombie = ZombieScene.instantiate()
-	Zombie.position = global_position
-	get_parent().add_child(Zombie)
+	var parent := get_parent()
+	if parent == null:
+		return
+	
+	var Zombie: Node =  ZombieScene.instantiate()
+	parent.add_child(Zombie)
+	if Zombie is Node2D:
+		Zombie.global_transform = global_transform
 	queue_free()
 
 func get_terror(delta) -> void:
@@ -164,3 +169,7 @@ func flee_state(delta):
 		idle_timer = randf_range(idle_duration_short, idle_duration_long)
 		#print("Switching to IDLE!")
 		set_state(AI_Mode.IDLE)
+
+func get_vaccinated():
+	pass
+	

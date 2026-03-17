@@ -108,3 +108,52 @@ func _on_any_player_died(dead: Node) -> void:
 	if get_tree().get_nodes_in_group("player").is_empty():
 		add_to_group("player")
 		print ("I'm the player now: ", name)
+
+#func get_cured():
+	#var HumanScene := load("res://Scenes/Human.tscn")
+	#var Human = HumanScene.instantiate()
+	#Human.position = global_position
+	#get_parent().add_child(Human)
+	#queue_free()
+	#print ("I'm Cured!")
+
+
+func get_cured() -> void:
+	# Defer the replacement if this can be triggered from signals like body_entered
+	call_deferred("_do_replace_with_human")
+
+func _do_replace_with_human() -> void:
+	var parent := get_parent()
+	if parent == null:
+		push_error("Cannot replace: zombie has no parent.")
+		return
+		
+	var human_packed := load("res://Scenes/Human.tscn")
+	if human_packed == null:
+		push_error("Failed to load Human scene at res://Scenes/Human.tscn")
+		return
+		
+	var human : Node = human_packed.instantiate()
+	if human == null:
+		push_error("Failed to instantiate Human scene.")
+		return
+		
+	parent.add_child(human)
+	
+	# If both are Node2D/CharacterBody2D, copy global transform to be exact
+	if human is Node2D and self is Node2D:
+		human.global_transform = self.global_transform
+	elif human.has_method("set_global_position") and self.has_method("get_global_position"):
+		human.global_position = self.global_position
+	else:
+	# Fallback if types differ; you can customize this
+	# For 3D use: human.global_transform = self.global_transform
+		pass
+
+	print("Spawned human at: ", human.global_position)
+	print("I am at: ", self.global_position)
+	# Optional: keep the same sibling order
+	parent.move_child(human, get_index())
+	# Now safely remove the zombie
+	queue_free()
+	print("I'm Cured!")
