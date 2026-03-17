@@ -46,33 +46,40 @@ func _physics_process(delta: float) -> void:
 			match sprite_facing:
 				"none", "down":
 					$Sprite2D.frame = 4
+					$DetectionLOS.rotation = 0
 					#print("Setting frame for:", sprite_facing, " Scream")
 				"up":
 					$Sprite2D.frame = 7
+					$DetectionLOS.rotation = 180
 					#print("Setting frame for:", sprite_facing, " Scream")
 				"left":
 					$Sprite2D.frame = 5
+					$DetectionLOS.rotation = 90
 					#print("Setting frame for:", sprite_facing, " Scream")
 				"right":
 					$Sprite2D.frame = 6
+					$DetectionLOS.rotation = -90
 					#print("Setting frame for:", sprite_facing, " Scream")
 		_:
 			match sprite_facing:
 				"none", "down":
 					$Sprite2D.frame = 0
+					$DetectionLOS.rotation = 0
 					#print("Setting frame for:", sprite_facing)
 				"up":
 					$Sprite2D.frame = 3
+					$DetectionLOS.rotation = 180
 					#print("Setting frame for:", sprite_facing)
 				"left":
 					$Sprite2D.frame = 1
+					$DetectionLOS.rotation = 90
 					#print("Setting frame for:", sprite_facing)
 				"right":
 					$Sprite2D.frame = 2
+					$DetectionLOS.rotation = -90
 					#print("Setting frame for:", sprite_facing)
 	
 	move_and_slide()
-	
 	if not alertness <= 0.0:
 		alertness -= delta
 
@@ -100,7 +107,7 @@ func convert_to_zombie() -> void:
 
 func get_terror(delta) -> void:
 	if alertness < alertness_max:
-		alertness += delta*3
+		alertness += delta*2
 	if alertness >= alertness_trigger:
 		set_state(AI_Mode.FLEE)
 
@@ -143,6 +150,7 @@ func get_point_zombies_near(points: Array) -> Vector2:
 func flee_state(delta):
 	if not $DetectionArea.get_overlapping_bodies().is_empty():
 		direction = (global_position - get_point_zombies_near($DetectionArea.get_overlapping_bodies())).normalized()
+		#print($DetectionArea.get_overlapping_bodies())
 	#print (direction)
 	velocity = direction * flee_speed
 	if alertness < alertness_trigger:
