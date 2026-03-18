@@ -6,8 +6,9 @@ extends CharacterBody2D
 enum AI_Mode { IDLE, WANDER, FLEE, CHASE}
 var state: AI_Mode = AI_Mode.WANDER
 var vaccindated := false
-var holding_cure := false
-var cure_quantity := 0
+@export var holding_cure := true
+var cure_top_up := 5
+var cure_quantity := 5
 
 var wander_direction := Vector2.ZERO
 @export var wander_duration_short := 1.0
@@ -105,9 +106,11 @@ func get_direction(vector: Vector2) -> String:
 	else:
 		return "up"
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("all_players"):
-		call_deferred("convert_to_zombie")
+#func _on_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("all_players") and holding_cure == true:
+		#cure_quantity -= 1
+		#body.get_cured()
+		#print("TAKE THIS CURE")
 
 func convert_to_zombie() -> void:
 	pass
@@ -169,8 +172,24 @@ func flee_state(delta):
 		#print("Switching to IDLE!")
 		set_state(AI_Mode.IDLE)
 
+func get_nearest_zombie(zombies: Array[Node2D], me: Vector2) -> Vector2:
+	var nearest:= Vector2.ZERO
+	var nearest_dist := INF
+	for zombie in zombies:
+		var pos := zombie.global_position
+		var d = me.distance_to(pos)
+		if d < nearest_dist:
+			nearest_dist = d
+			nearest = pos
+	return nearest
+
+
 func chase_state(delta):
-	pass
+	if $DetectionArea.has_overlapping_bodies():
+		direction = (get_nearest_zombie($DetectionArea.get_overlapping_bodies(), global_position) - global_position).normalized()
+		velocity = direction * chase_speed
+	else:
+		set_state(AI_Mode.WANDER)
 
 func get_vaccinated():
 	pass

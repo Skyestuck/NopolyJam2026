@@ -7,10 +7,10 @@ func _ready() -> void:
 
 
 #Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	for body in get_overlapping_bodies():
-		if body.is_in_group("all_humans"):
-			body.get_terror(delta)
+#func _process(delta: float) -> void:
+	#for body in get_overlapping_bodies():
+		#if body.is_in_group("all_humans"):
+			#body.get_terror(delta)
 
 #func _on_body_entered(body: Node2D) -> void:
 	#if body.is_in_group("all_humans"): print(body) # Replace with function body.

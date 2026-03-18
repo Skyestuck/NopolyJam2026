@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5gx2eeh0xq8j" path="res://Scripts/HumanCharacter.gd" id="1_t8tqr"]
 [ext_resource type="Texture2D" uid="uid://cva6sdljaysk8" path="res://Sprites/Human.png" id="1_uf8j7"]
 [ext_resource type="Script" uid="uid://jirg252yhify" path="res://Scripts/conversion_area.gd" id="2_t8tqr"]
-[ext_resource type="Script" uid="uid://bsgrw5o11fqn7" path="res://Scenes/detection_los.gd" id="3_3kmkr"]
+[ext_resource type="Script" uid="uid://bsgrw5o11fqn7" path="res://Scripts/detection_los.gd" id="3_3kmkr"]
 [ext_resource type="Texture2D" uid="uid://xda1cxnn2xga" path="res://Sprites/Alert.png" id="5_3kmkr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lr0no"]
@@ -63,6 +63,7 @@ shape = SubResource("CapsuleShape2D_t8tqr")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=871350680]
 collision_layer = 0
+script = ExtResource("3_3kmkr")
 
 [node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea" unique_id=1692708784]
 shape = SubResource("CircleShape2D_t8tqr")

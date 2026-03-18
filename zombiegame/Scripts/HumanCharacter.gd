@@ -9,6 +9,7 @@ var state: AI_Mode = AI_Mode.WANDER
 var vaccindated := false
 var holding_cure := false
 
+
 var wander_direction := Vector2.ZERO
 @export var wander_duration_short := 1.0
 @export var wander_duration_long := 3.0
@@ -99,10 +100,6 @@ func get_direction(vector: Vector2) -> String:
 		return "down"
 	else:
 		return "up"
-
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("all_players"):
-		call_deferred("convert_to_zombie")
 
 func convert_to_zombie() -> void:
 	var parent := get_parent()

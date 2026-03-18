@@ -119,7 +119,6 @@ func _on_any_player_died(dead: Node) -> void:
 
 
 func get_cured() -> void:
-	# Defer the replacement if this can be triggered from signals like body_entered
 	call_deferred("_do_replace_with_human")
 
 func _do_replace_with_human() -> void:
@@ -140,20 +139,15 @@ func _do_replace_with_human() -> void:
 		
 	parent.add_child(human)
 	
-	# If both are Node2D/CharacterBody2D, copy global transform to be exact
 	if human is Node2D and self is Node2D:
 		human.global_transform = self.global_transform
 	elif human.has_method("set_global_position") and self.has_method("get_global_position"):
 		human.global_position = self.global_position
 	else:
-	# Fallback if types differ; you can customize this
-	# For 3D use: human.global_transform = self.global_transform
 		pass
 
 	print("Spawned human at: ", human.global_position)
 	print("I am at: ", self.global_position)
-	# Optional: keep the same sibling order
 	parent.move_child(human, get_index())
-	# Now safely remove the zombie
 	queue_free()
 	print("I'm Cured!")
