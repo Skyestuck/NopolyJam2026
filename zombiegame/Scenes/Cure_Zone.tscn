@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dmbo8pxbeybtr"]
+
+[ext_resource type="Script" uid="uid://b8cchorgdld7p" path="res://Scenes/cure_zone.gd" id="1_cs75a"]
+[ext_resource type="Texture2D" uid="uid://bqtf86wsubq1a" path="res://Sprites/Cure.png" id="1_defpw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs75a"]
+size = Vector2(48, 48)
+
+[node name="CureZone" type="Node2D" unique_id=2050805564]
+
+[node name="CureArea" type="Area2D" parent="." unique_id=999749722]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_cs75a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CureArea" unique_id=2036498355]
+shape = SubResource("RectangleShape2D_cs75a")
+
+[node name="Sprite2D" type="Sprite2D" parent="CureArea/CollisionShape2D" unique_id=1325015184]
+texture = ExtResource("1_defpw")

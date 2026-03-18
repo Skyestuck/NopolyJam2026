@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bsgrw5o11fqn7" path="res://Scripts/detection_los.gd" id="3_wj52e"]
 [ext_resource type="Texture2D" uid="uid://beqn5my0qvc0l" path="res://Sprites/Military.png" id="4_6pi1o"]
 [ext_resource type="Texture2D" uid="uid://xda1cxnn2xga" path="res://Sprites/Alert.png" id="5_k3i8d"]
+[ext_resource type="Texture2D" uid="uid://bqtf86wsubq1a" path="res://Sprites/Cure.png" id="6_5csn2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lr0no"]
 radius = 6.0
@@ -25,8 +26,8 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5csn2"]
-radius = 6.0
-height = 16.0
+radius = 9.0
+height = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t8tqr"]
 radius = 142.12671
@@ -61,6 +62,13 @@ script = ExtResource("2_6pi1o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CuringArea" unique_id=218942784]
 shape = SubResource("CapsuleShape2D_5csn2")
 
+[node name="RecruitingArea" type="Area2D" parent="." unique_id=735493401]
+collision_layer = 0
+script = ExtResource("2_6pi1o")
+
+[node name="RecruitingShape" type="CollisionShape2D" parent="RecruitingArea" unique_id=2090490159]
+shape = SubResource("CapsuleShape2D_5csn2")
+
 [node name="DetectionArea" type="Area2D" parent="." unique_id=871350680]
 collision_layer = 0
 script = ExtResource("3_wj52e")
@@ -86,4 +94,10 @@ vframes = 2
 texture = ExtResource("5_k3i8d")
 offset = Vector2(0, -15)
 
+[node name="Cure" type="Sprite2D" parent="." unique_id=1810063569]
+position = Vector2(0, -1)
+texture = ExtResource("6_5csn2")
+offset = Vector2(0, -15)
+
 [connection signal="body_entered" from="CuringArea" to="CuringArea" method="_on_body_entered"]
+[connection signal="body_entered" from="RecruitingArea" to="RecruitingArea" method="_on_body_entered"]

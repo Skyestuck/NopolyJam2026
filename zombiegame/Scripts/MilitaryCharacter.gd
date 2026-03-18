@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-#Preload Zombie
 
 #State Variables
-enum AI_Mode { IDLE, WANDER, FLEE, CHASE}
+enum AI_Mode { IDLE, WANDER, FLEE, CHASE, RESTOCK, RECRUIT}
 var state: AI_Mode = AI_Mode.WANDER
 var vaccindated := false
 @export var holding_cure := true
@@ -20,6 +19,8 @@ var wander_speed := 30.0
 @export var idle_duration_long := 1.5
 var idle_timer := 0.0
 
+var misc_speed := 50.0
+
 var direction : Vector2 = Vector2.ZERO
 var alertness := 0.0
 @export var alertness_trigger := 2.2
@@ -30,10 +31,17 @@ var sprite_facing := "none"
 
 var chase_speed := 80.0
 
+var small_vision = 0.6
+var regular_vision = 1.0
+
+var recruit_timer := 0
+var recruit_trigger := 60
+
 func _ready():
 	add_to_group("all_humans")
 	add_to_group("all_military")
 	$Alert.visible = false
+	$Cure.visible = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -51,6 +59,10 @@ func _physics_process(delta: float) -> void:
 			flee_state(delta)
 		AI_Mode.CHASE:
 			chase_state(delta)
+		AI_Mode.RESTOCK:
+			restock_state(delta)
+		AI_Mode.RECRUIT:
+			recruit_state(delta)
 	
 	sprite_facing = get_direction(direction)
 	
@@ -79,21 +91,25 @@ func _physics_process(delta: float) -> void:
 					$Sprite2D.frame = 0
 					$DetectionLOS.rotation = 0
 					$Alert.visible = false
+					$Cure.visible = false
 					#print("Setting frame for:", sprite_facing)
 				"up":
 					$Sprite2D.frame = 3
 					$DetectionLOS.rotation = 180
 					$Alert.visible = false
+					$Cure.visible = false
 					#print("Setting frame for:", sprite_facing)
 				"left":
 					$Sprite2D.frame = 1
 					$DetectionLOS.rotation = 90
 					$Alert.visible = false
+					$Cure.visible = false
 					#print("Setting frame for:", sprite_facing)
 				"right":
 					$Sprite2D.frame = 2
 					$DetectionLOS.rotation = -90
 					$Alert.visible = false
+					$Cure.visible = false
 					#print("Setting frame for:", sprite_facing)
 	
 	move_and_slide()
@@ -128,7 +144,7 @@ func get_terror(delta) -> void:
 		alertness += delta*2
 	if alertness >= alertness_trigger and holding_cure == true:
 		set_state(AI_Mode.CHASE)
-		$Alert.visible = true
+		$Cure.visible = true
 	elif alertness >= alertness_trigger and holding_cure == false:
 		set_state(AI_Mode.FLEE)
 		$Alert.visible = true
@@ -138,6 +154,12 @@ func set_state(new_state: AI_Mode):
 	state = new_state
 
 func wander_state(delta):
+	#Check for higher priority tasks
+	if holding_cure == false:
+		set_state(AI_Mode.RESTOCK)
+	elif recruit_timer >= recruit_trigger:
+		set_state(AI_Mode.RECRUIT)
+	#nothing better to do... then Idle
 	wander_timer -= delta
 	if wander_timer <= 0:
 		idle_timer = randf_range(idle_duration_short, idle_duration_long)
@@ -149,6 +171,12 @@ func wander_state(delta):
 	velocity = direction * wander_speed
 
 func idle_state(delta):
+	#Check for higher priority tasks
+	if holding_cure == false:
+		set_state(AI_Mode.RESTOCK)
+	elif recruit_timer >= recruit_trigger:
+		set_state(AI_Mode.RECRUIT)
+	#nothing better to do... then Wander
 	idle_timer -= delta
 	velocity = Vector2.ZERO
 	if idle_timer <= 0:
@@ -197,6 +225,20 @@ func chase_state(delta):
 	if $DetectionArea.has_overlapping_bodies():
 		direction = (get_nearest_zombie($DetectionArea.get_overlapping_bodies(), global_position) - global_position).normalized()
 		velocity = direction * chase_speed
+	else:
+		set_state(AI_Mode.WANDER)
+
+func restock_state(delta):
+	if not $DetectionArea.has_overlapping_bodies() and holding_cure == false:
+		direction = (get_nearest_zombie($DetectionArea.get_overlapping_bodies(), global_position) - global_position).normalized()
+		velocity = direction * misc_speed
+	else:
+		set_state(AI_Mode.WANDER)
+
+func recruit_state(delta):
+	if not $DetectionArea.has_overlapping_bodies() and recruit_timer >= recruit_trigger:
+		direction = (get_nearest_zombie($DetectionArea.get_overlapping_bodies(), global_position) - global_position).normalized()
+		velocity = direction * misc_speed
 	else:
 		set_state(AI_Mode.WANDER)
 

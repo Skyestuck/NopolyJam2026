@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5gu5f88nwv5" path="res://Scenes/Human.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://cn82s43l4xyey" path="res://Scenes/Building.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://d0rr7frqqu3pn" path="res://Scenes/Military.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://dmbo8pxbeybtr" path="res://Scenes/Cure_Zone.tscn" id="8_ldgsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4fw4"]
 texture = ExtResource("3_v158k")
@@ -89,10 +90,13 @@ position = Vector2(-6.1035156e-05, 6.1035156e-05)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("1_ebmjs")]
-position = Vector2(168, 832)
+position = Vector2(72, 352)
 
 [node name="Trap" parent="." unique_id=1560308648 instance=ExtResource("3_wrm1d")]
 position = Vector2(631, 373)
+
+[node name="CureZone" parent="." unique_id=2050805564 instance=ExtResource("8_ldgsr")]
+position = Vector2(80, 200)
 
 [node name="Human" parent="." unique_id=582231648 instance=ExtResource("5_wowpa")]
 position = Vector2(877, 447)
