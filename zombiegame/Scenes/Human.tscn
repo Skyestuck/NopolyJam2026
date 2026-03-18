@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://jirg252yhify" path="res://Scripts/conversion_area.gd" id="2_t8tqr"]
 [ext_resource type="Script" uid="uid://bsgrw5o11fqn7" path="res://Scripts/detection_los.gd" id="3_3kmkr"]
 [ext_resource type="Texture2D" uid="uid://xda1cxnn2xga" path="res://Sprites/Alert.png" id="5_3kmkr"]
+[ext_resource type="Texture2D" uid="uid://dl3xvkixu2skk" path="res://Sprites/Intrigue.png" id="6_a7uhl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lr0no"]
 radius = 6.0
@@ -84,6 +85,10 @@ vframes = 2
 
 [node name="Alert" type="Sprite2D" parent="." unique_id=1624557127]
 texture = ExtResource("5_3kmkr")
+offset = Vector2(0, -15)
+
+[node name="Suspicion" type="Sprite2D" parent="." unique_id=93302382]
+texture = ExtResource("6_a7uhl")
 offset = Vector2(0, -15)
 
 [connection signal="body_entered" from="ConversionArea" to="ConversionArea" method="_on_body_entered"]

@@ -31,6 +31,7 @@ var sprite_facing := "none"
 func _ready():
 	add_to_group("all_humans")
 	$Alert.visible = false
+	$Suspicion.visible = false
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -88,6 +89,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if not alertness <= 0.0:
 		alertness -= delta
+	else:
+		$Suspicion.visible = false
 
 func get_direction(vector: Vector2) -> String:
 	if vector == Vector2.ZERO: 
@@ -115,8 +118,10 @@ func convert_to_zombie() -> void:
 func get_terror(delta) -> void:
 	if alertness < alertness_max:
 		alertness += delta*2
+		$Suspicion.visible = true
 	if alertness >= alertness_trigger:
 		set_state(AI_Mode.FLEE)
+		$Suspicion.visible = false
 		$Alert.visible = true
 
 
@@ -163,6 +168,7 @@ func flee_state(delta):
 	#print (direction)
 	velocity = direction * flee_speed
 	if alertness < alertness_trigger:
+		$Suspicion.visible = false 
 		idle_timer = randf_range(idle_duration_short, idle_duration_long)
 		#print("Switching to IDLE!")
 		set_state(AI_Mode.IDLE)

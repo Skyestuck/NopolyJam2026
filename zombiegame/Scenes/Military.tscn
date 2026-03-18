@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://beqn5my0qvc0l" path="res://Sprites/Military.png" id="4_6pi1o"]
 [ext_resource type="Texture2D" uid="uid://xda1cxnn2xga" path="res://Sprites/Alert.png" id="5_k3i8d"]
 [ext_resource type="Texture2D" uid="uid://bqtf86wsubq1a" path="res://Sprites/Cure.png" id="6_5csn2"]
+[ext_resource type="Texture2D" uid="uid://dl3xvkixu2skk" path="res://Sprites/Intrigue.png" id="6_wj52e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lr0no"]
 radius = 6.0
@@ -64,6 +65,7 @@ shape = SubResource("CapsuleShape2D_5csn2")
 
 [node name="RecruitingArea" type="Area2D" parent="." unique_id=735493401]
 collision_layer = 0
+collision_mask = 2
 script = ExtResource("2_6pi1o")
 
 [node name="RecruitingShape" type="CollisionShape2D" parent="RecruitingArea" unique_id=2090490159]
@@ -92,6 +94,10 @@ vframes = 2
 
 [node name="Alert" type="Sprite2D" parent="." unique_id=1624557127]
 texture = ExtResource("5_k3i8d")
+offset = Vector2(0, -15)
+
+[node name="Suspicion" type="Sprite2D" parent="." unique_id=1796126124]
+texture = ExtResource("6_wj52e")
 offset = Vector2(0, -15)
 
 [node name="Cure" type="Sprite2D" parent="." unique_id=1810063569]
