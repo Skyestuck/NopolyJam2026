@@ -17,6 +17,10 @@ position = Vector2(320.5, 179)
 scale = Vector2(4.9765625, 2.8125)
 texture = ExtResource("1_qxrlw")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1587503876]
+position = Vector2(-6.1035156e-05, 6.1035156e-05)
+scale = Vector2(0.99999994, 0.99999994)
+
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("1_ebmjs")]
 position = Vector2(905, 1039)
 

@@ -36,6 +36,12 @@ func _ready():
 	$Alert.visible = false
 
 func _physics_process(delta: float) -> void:
+	
+	if cure_quantity >= 1:
+		holding_cure = true
+	else:
+		holding_cure = false
+	
 	match state:
 		AI_Mode.IDLE:
 			idle_state(delta)
@@ -120,8 +126,11 @@ func get_terror(delta) -> void:
 	#if they don't have cures, they will try to return to a cure zone to restock
 	if alertness < alertness_max:
 		alertness += delta*2
-	if alertness >= alertness_trigger:
+	if alertness >= alertness_trigger and holding_cure == true:
 		set_state(AI_Mode.CHASE)
+		$Alert.visible = true
+	elif alertness >= alertness_trigger and holding_cure == false:
+		set_state(AI_Mode.FLEE)
 		$Alert.visible = true
 
 

@@ -33,7 +33,4 @@ script = ExtResource("3_yf4vm")
 [node name="TerrorRadiusShape" type="CollisionShape2D" parent="CharacterBody2D/TerrorRadius" unique_id=1092239480]
 shape = SubResource("CircleShape2D_yf4vm")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1704705055]
-position_smoothing_enabled = true
-
 [connection signal="body_entered" from="CharacterBody2D/TerrorRadius" to="CharacterBody2D/TerrorRadius" method="_on_body_entered"]

@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if is_in_group("player"):
 		var input := Input.get_vector("MoveLeft","MoveRight","MoveUp","MoveDown")
+		SPEED = default_speed
 		sprite_facing = get_direction(input)
 		lifetime += 1
 		velocity = input * SPEED
@@ -85,7 +86,7 @@ func get_nearest_human(humans: Array[Node2D], me: Vector2) -> Vector2:
 	for human in humans:
 		var pos := human.global_position
 		var d = me.distance_to(pos)
-		if d < nearest_dist:
+		if d < nearest_dist and not human.is_in_group("all_military"):
 			nearest_dist = d
 			nearest = pos
 	return nearest
