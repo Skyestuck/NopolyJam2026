@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 		game_over()
 	
 	var player = get_tree().get_nodes_in_group("player")
-	if player.size() == 0:
+	if player.size() == 0 and zombies.size() != 0:
 			var new_player = zombies[0]
 			new_player.add_to_group("player")
 			print("Assigned new player:", new_player.name)

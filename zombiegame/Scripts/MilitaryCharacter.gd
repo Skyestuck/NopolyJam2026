@@ -114,7 +114,7 @@ func get_direction(vector: Vector2) -> String:
 
 #func _on_body_entered(body: Node2D) -> void:
 	#if body.is_in_group("all_players") and holding_cure == true:
-		#cure_quantity -= 1
+		#cure_quantity -= 1asw
 		#body.get_cured()
 		#print("TAKE THIS CURE")
 
