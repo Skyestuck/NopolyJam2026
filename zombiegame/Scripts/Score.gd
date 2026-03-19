@@ -17,7 +17,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player_alive:
 		score += ((score_rate * zombie_count) * score_multiplier) * delta
-	
-	
-	
-	print(score)

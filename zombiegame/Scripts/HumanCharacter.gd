@@ -116,6 +116,7 @@ func convert_to_zombie() -> void:
 	if Zombie is Node2D:
 		Zombie.global_transform = global_transform
 		Score.zombie_count += 1
+		Score.score += 10
 	queue_free()
 
 func get_terror(delta) -> void:
