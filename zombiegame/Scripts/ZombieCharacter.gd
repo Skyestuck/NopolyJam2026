@@ -147,9 +147,10 @@ func _do_replace_with_human() -> void:
 		human.global_position = self.global_position
 	else:
 		pass
-
+	
 	print("Spawned human at: ", human.global_position)
 	print("I am at: ", self.global_position)
 	parent.move_child(human, get_index())
+	Score.zombie_count -= 1
 	queue_free()
-	#ddsprint("I'm Cured!")
+	#print("I'm Cured!")

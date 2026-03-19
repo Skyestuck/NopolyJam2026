@@ -42,6 +42,6 @@ func _process(delta: float) -> void:
 
 
 func game_over():
+	Score.player_alive = false
 	print("GAME OVER!")
-
 	#pass

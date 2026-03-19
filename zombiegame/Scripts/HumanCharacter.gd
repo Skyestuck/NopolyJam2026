@@ -115,6 +115,7 @@ func convert_to_zombie() -> void:
 	parent.add_child(Zombie)
 	if Zombie is Node2D:
 		Zombie.global_transform = global_transform
+		Score.zombie_count += 1
 	queue_free()
 
 func get_terror(delta) -> void:

@@ -19,6 +19,10 @@ run/main_scene="uid://cb6ta0scg1jlw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 
+[autoload]
+
+Score="*uid://cpikmoi8u6o8o"
+
 [display]
 
 window/size/viewport_width=640
