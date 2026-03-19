@@ -3,7 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$CanvasLayer/VBoxMain.visible = true
+	$CanvasLayer/VBoxSettings.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,8 +17,21 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
+	$CanvasLayer/VBoxMain.visible = false
+	$CanvasLayer/VBoxSettings.visible = true
 	pass # Replace with function body.
 
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_option_button_item_selected(index: int) -> void:
+	match index:
+		0:
+			DisplayServer.window_set_size(Vector2i(640,360))
+		1:
+			DisplayServer.window_set_size(Vector2i(1280,720))
+		2:
+			DisplayServer.window_set_size(Vector2i(1920,1080))
+		

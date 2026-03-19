@@ -28,6 +28,8 @@ sources/0 = SubResource("TileSetAtlasSource_t5k4x")
 [sub_resource type="LabelSettings" id="LabelSettings_ub57s"]
 font_size = 32
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_npujj"]
+
 [node name="MenuScreen" type="Node2D" unique_id=1846172612]
 script = ExtResource("1_33mj8")
 
@@ -61,7 +63,7 @@ scale = Vector2(12, 12)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=460996276]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=909320702]
+[node name="VBoxMain" type="VBoxContainer" parent="CanvasLayer" unique_id=909320702]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -76,23 +78,57 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Title" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=846881515]
+[node name="Title" type="Label" parent="CanvasLayer/VBoxMain" unique_id=846881515]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Postapocalyptic"
 label_settings = SubResource("LabelSettings_ub57s")
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=858025329]
+[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxMain" unique_id=858025329]
 layout_mode = 2
 text = "Play Button"
 
-[node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=360634410]
+[node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxMain" unique_id=360634410]
 layout_mode = 2
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=469170388]
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxMain" unique_id=469170388]
 layout_mode = 2
 text = "Quit"
+
+[node name="VBoxSettings" type="VBoxContainer" parent="CanvasLayer" unique_id=103661475]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -20.0
+offset_right = 87.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="CanvasLayer/VBoxSettings" unique_id=857494667]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Postapocalyptic"
+label_settings = SubResource("LabelSettings_ub57s")
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/VBoxSettings" unique_id=397664073]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_npujj")
+selected = 0
+item_count = 3
+popup/item_0/text = "640 x 360"
+popup/item_0/id = 0
+popup/item_1/text = "1280 x 720"
+popup/item_1/id = 1
+popup/item_2/text = "1920 x 1080"
+popup/item_2/id = 2
 
 [node name="Human" parent="." unique_id=582231648 instance=ExtResource("2_hrq6a")]
 position = Vector2(144, 176)
@@ -102,6 +138,7 @@ position = Vector2(480, 120)
 
 [node name="Military" parent="." unique_id=479007145 instance=ExtResource("3_viqbp")]
 position = Vector2(304, 80)
+recruit_timer = 30.0
 
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("6_npujj")]
 position = Vector2(168, 352)
@@ -118,6 +155,7 @@ position = Vector2(592, 328)
 [node name="Human3" parent="." unique_id=57977561 instance=ExtResource("2_hrq6a")]
 position = Vector2(408, 328)
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxMain/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxMain/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxMain/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="item_selected" from="CanvasLayer/VBoxSettings/OptionButton" to="." method="_on_option_button_item_selected"]
