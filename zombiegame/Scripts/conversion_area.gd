@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("all_players"):
-		print("CONVERT!")
+		#print("CONVERT!")
 		get_parent().call_deferred("convert_to_zombie")

@@ -15,9 +15,10 @@ func _ready():
 	add_to_group("all_players")
 	if get_tree().get_nodes_in_group("player").is_empty():
 		add_to_group("player")
-		print("I'm player")
+		#print("I'm player")
 	else:
-		print("Player exists")
+		#print("Player exists")
+		pass
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
@@ -93,9 +94,9 @@ func get_nearest_human(humans: Array[Node2D], me: Vector2) -> Vector2:
 
 func take_damage(amount: int) -> void:
 	playerhp -= amount
-	print("HP: ", playerhp)
+	#print("HP: ", playerhp)
 	if playerhp <= 0:
-		print("A Zombie Died!")
+		#print("A Zombie Died!")
 		remove_from_group("player")
 		queue_free()
 		get_tree().call_group("all_players", "_on_any_player_died", self)
@@ -108,7 +109,7 @@ func _on_any_player_died(dead: Node) -> void:
 		return
 	if get_tree().get_nodes_in_group("player").is_empty():
 		add_to_group("player")
-		print ("I'm the player now: ", name)
+		#print ("I'm the player now: ", name)
 
 #func get_cured():
 	#var HumanScene := load("res://Scenes/Human.tscn")
@@ -151,4 +152,4 @@ func _do_replace_with_human() -> void:
 	print("I am at: ", self.global_position)
 	parent.move_child(human, get_index())
 	queue_free()
-	print("I'm Cured!")
+	#ddsprint("I'm Cured!")

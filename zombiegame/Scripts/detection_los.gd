@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 	for body in get_overlapping_bodies():
 		if body.is_in_group("all_players"):
 			get_parent().get_terror(delta)
-			print("I see you!")
+			#print("I see you!")

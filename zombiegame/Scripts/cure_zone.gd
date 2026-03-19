@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 		for body in get_overlapping_bodies():
 			if body.is_in_group("all_military") and body.cure_quantity != body.cure_top_up:
 				body.cure_quantity = body.cure_top_up
-				print("Restock!")
+				#print("Restock!")

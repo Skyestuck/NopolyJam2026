@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	if player.size() == 0 and zombies.size() != 0:
 			var new_player = zombies[0]
 			new_player.add_to_group("player")
-			print("Assigned new player:", new_player.name)
+			#print("Assigned new player:", new_player.name)
 	
 
 

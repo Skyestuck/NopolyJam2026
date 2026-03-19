@@ -16,10 +16,10 @@ func _process(delta: float) -> void:
 				has_damaged = true
 				$TrapCooldown.start()
 
-func print_group(group_name: String) -> void:
-	var members = get_tree().get_nodes_in_group(group_name)
-	for node in members:
-		print(node)  # prints the node reference
+#func print_group(group_name: String) -> void:
+	#var members = get_tree().get_nodes_in_group(group_name)
+	#for node in members:
+		#print(node)  # prints the node reference
 
 
 func _on_body_entered(body: Node2D) -> void:

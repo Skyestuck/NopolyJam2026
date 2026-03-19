@@ -34,8 +34,9 @@ var chase_speed := 80.0
 var small_vision = 0.6
 var regular_vision = 1.0
 
-var recruit_timer = 0.0
+var recruit_timer = 55.0
 var recruit_trigger = 60.0
+var detected_humans = []
 
 func _ready():
 	add_to_group("all_humans")
@@ -45,10 +46,19 @@ func _ready():
 	$Suspicion.visible = false
 
 func _physics_process(delta: float) -> void:
+	detected_humans.clear()
 	recruit_timer += delta
 	recruit_timer = min(recruit_timer, recruit_trigger)
-	print(recruit_timer)
-
+	#print(recruit_timer)
+	
+	if $RecruitDetection.has_overlapping_bodies():
+		for body in $RecruitDetection.get_overlapping_bodies():
+			if body == null or not is_instance_valid(body):
+				continue
+			
+			if body.is_in_group("non_military_humans") and body not in detected_humans:
+				detected_humans.append(body)
+	
 	if cure_quantity >= 1:
 		holding_cure = true
 	else:
@@ -166,7 +176,7 @@ func wander_state(delta):
 	#Check for higher priority tasks
 	if holding_cure == false:
 		set_state(AI_Mode.RESTOCK)
-	elif recruit_timer >= recruit_trigger:
+	elif recruit_timer >= recruit_trigger and not get_tree().get_nodes_in_group("non_military_humans").is_empty() and not detected_humans.is_empty():
 		set_state(AI_Mode.RECRUIT)
 	#nothing better to do... then Idle
 	wander_timer -= delta
@@ -183,7 +193,7 @@ func idle_state(delta):
 	#Check for higher priority tasks
 	if holding_cure == false:
 		set_state(AI_Mode.RESTOCK)
-	elif recruit_timer >= recruit_trigger:
+	elif recruit_timer >= recruit_trigger and not get_tree().get_nodes_in_group("non_military_humans").is_empty() and not detected_humans.is_empty():
 		set_state(AI_Mode.RECRUIT)
 	#nothing better to do... then Wander
 	idle_timer -= delta
@@ -245,17 +255,19 @@ func restock_state(delta):
 	else:
 		set_state(AI_Mode.WANDER)
 
-func recruit_state(delta):
-	if not $DetectionArea.has_overlapping_bodies() and recruit_timer >= recruit_trigger:
+func recruit_state(delta):	
+	#if not being chased, and ready to recruit, and some non-military humans exist, and they are near me
+	#this still might tweak out unless I add detected_humans outside of this function
+	if not $DetectionArea.has_overlapping_bodies() and recruit_timer >= recruit_trigger and not get_tree().get_nodes_in_group("non_military_humans").is_empty() and not detected_humans.is_empty():
 		#get nearest human, actually
 		direction = (get_nearest_zombie(get_tree().get_nodes_in_group("non_military_humans"), global_position) - global_position).normalized()
+		#print("I'm Recruiting!")
 		velocity = direction * misc_speed
 		if $RecruitingArea.has_overlapping_bodies():
-			var recruits = $RecruitingArea.get_overlapping_bodies()
-			for r in recruits:
+			for r in $RecruitingArea.get_overlapping_bodies():
 				if not r.is_in_group("all_military"):
 					r.get_recruited()
-					recruit_timer = 0
+					recruit_timer = 55.0
 					break
 	else:
 		set_state(AI_Mode.WANDER)

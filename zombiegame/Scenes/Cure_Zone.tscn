@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmbo8pxbeybtr"]
 
-[ext_resource type="Script" uid="uid://b8cchorgdld7p" path="res://Scenes/cure_zone.gd" id="1_cs75a"]
+[ext_resource type="Script" uid="uid://b8cchorgdld7p" path="res://Scripts/cure_zone.gd" id="1_cs75a"]
 [ext_resource type="Texture2D" uid="uid://bqtf86wsubq1a" path="res://Sprites/Cure.png" id="1_defpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs75a"]
