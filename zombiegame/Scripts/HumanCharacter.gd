@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 #Preload Zombie
 var ZombieScene := preload("res://Scenes/Zombie.tscn")
+var MilitaryScene := preload("res://Scenes/Military.tscn")
 
 #State Variables
 enum AI_Mode { IDLE, WANDER, FLEE }
@@ -30,6 +31,7 @@ var sprite_facing := "none"
 
 func _ready():
 	add_to_group("all_humans")
+	add_to_group("non_military_humans")
 	$Alert.visible = false
 	$Suspicion.visible = false
 
@@ -173,6 +175,13 @@ func flee_state(delta):
 		#print("Switching to IDLE!")
 		set_state(AI_Mode.IDLE)
 
-func get_vaccinated():
-	pass
+func get_recruited() -> void:
+	var parent := get_parent()
+	if parent == null:
+		return
 	
+	var Military: Node =  MilitaryScene.instantiate()
+	parent.add_child(Military)
+	if Military is Node2D:
+		Military.global_transform = global_transform
+	queue_free()

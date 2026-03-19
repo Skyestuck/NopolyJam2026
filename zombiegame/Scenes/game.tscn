@@ -96,7 +96,7 @@ position = Vector2(72, 352)
 position = Vector2(631, 373)
 
 [node name="CureZone" parent="." unique_id=2050805564 instance=ExtResource("8_ldgsr")]
-position = Vector2(80, 200)
+position = Vector2(24, 25)
 
 [node name="Human" parent="." unique_id=582231648 instance=ExtResource("5_wowpa")]
 position = Vector2(877, 447)
@@ -213,7 +213,16 @@ position = Vector2(1003, 1159)
 position = Vector2(37, 1114)
 
 [node name="Military3" parent="." unique_id=122293051 instance=ExtResource("7_1l0tm")]
-position = Vector2(81, 75)
+position = Vector2(234, 102)
 
 [node name="Military4" parent="." unique_id=277832072 instance=ExtResource("7_1l0tm")]
-position = Vector2(1201, 73)
+position = Vector2(1143, 119)
+
+[node name="CureZone2" parent="." unique_id=1411341154 instance=ExtResource("8_ldgsr")]
+position = Vector2(1256, 1256)
+
+[node name="CureZone3" parent="." unique_id=524894079 instance=ExtResource("8_ldgsr")]
+position = Vector2(1256, 25)
+
+[node name="CureZone4" parent="." unique_id=539775693 instance=ExtResource("8_ldgsr")]
+position = Vector2(24, 1256)

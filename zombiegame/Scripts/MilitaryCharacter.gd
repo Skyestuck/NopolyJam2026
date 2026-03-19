@@ -24,7 +24,7 @@ var misc_speed := 50.0
 var direction : Vector2 = Vector2.ZERO
 var alertness := 0.0
 @export var alertness_trigger := 2.2
-var alertness_max = 10.0
+var alertness_max = 5.0
 var flee_timer := 0.0
 var flee_speed := 80.0
 var sprite_facing := "none"
@@ -34,8 +34,8 @@ var chase_speed := 80.0
 var small_vision = 0.6
 var regular_vision = 1.0
 
-var recruit_timer := 0
-var recruit_trigger := 60
+var recruit_timer = 0.0
+var recruit_trigger = 60.0
 
 func _ready():
 	add_to_group("all_humans")
@@ -45,7 +45,10 @@ func _ready():
 	$Suspicion.visible = false
 
 func _physics_process(delta: float) -> void:
-	
+	recruit_timer += delta
+	recruit_timer = min(recruit_timer, recruit_trigger)
+	print(recruit_timer)
+
 	if cure_quantity >= 1:
 		holding_cure = true
 	else:
@@ -215,11 +218,11 @@ func flee_state(delta):
 		#print("Switching to IDLE!")
 		set_state(AI_Mode.IDLE)
 
-func get_nearest_zombie(zombies: Array[Node2D], me: Vector2) -> Vector2:
+func get_nearest_zombie(zombies: Array, me: Vector2) -> Vector2:
 	var nearest:= Vector2.ZERO
 	var nearest_dist := INF
 	for zombie in zombies:
-		var pos := zombie.global_position
+		var pos: Vector2 = zombie.global_position
 		var d = me.distance_to(pos)
 		if d < nearest_dist:
 			nearest_dist = d
@@ -236,18 +239,23 @@ func chase_state(delta):
 
 func restock_state(delta):
 	if not $DetectionArea.has_overlapping_bodies() and holding_cure == false:
-		direction = (get_nearest_zombie($DetectionArea.get_overlapping_bodies(), global_position) - global_position).normalized()
+		#get nearest cure zone, actually
+		direction = (get_nearest_zombie(get_tree().get_nodes_in_group("cure_zone"), global_position) - global_position).normalized()
 		velocity = direction * misc_speed
 	else:
 		set_state(AI_Mode.WANDER)
 
 func recruit_state(delta):
 	if not $DetectionArea.has_overlapping_bodies() and recruit_timer >= recruit_trigger:
-		direction = (get_nearest_zombie($DetectionArea.get_overlapping_bodies(), global_position) - global_position).normalized()
+		#get nearest human, actually
+		direction = (get_nearest_zombie(get_tree().get_nodes_in_group("non_military_humans"), global_position) - global_position).normalized()
 		velocity = direction * misc_speed
+		if $RecruitingArea.has_overlapping_bodies():
+			var recruits = $RecruitingArea.get_overlapping_bodies()
+			for r in recruits:
+				if not r.is_in_group("all_military"):
+					r.get_recruited()
+					recruit_timer = 0
+					break
 	else:
 		set_state(AI_Mode.WANDER)
-
-func get_vaccinated():
-	pass
-	
