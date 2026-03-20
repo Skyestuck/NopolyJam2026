@@ -64,7 +64,6 @@ tile_set = SubResource("TileSet_o5yvi")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1587503876]
 position = Vector2(656, 551.99994)
 scale = Vector2(0.99999994, 0.99999994)
-zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 

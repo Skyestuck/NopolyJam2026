@@ -34,7 +34,7 @@ var chase_speed := 80.0
 var small_vision = 0.6
 var regular_vision = 1.0
 
-@export var recruit_timer = 0.0
+@export var recruit_timer = 50.0
 var recruit_trigger = 60.0
 var detected_humans = []
 
@@ -263,7 +263,7 @@ func restock_state(delta):
 func recruit_state(delta):	
 	#if not being chased, and ready to recruit, and some non-military humans exist, and they are near me
 	#this still might tweak out unless I add detected_humans outside of this function
-	if not $DetectionArea.has_overlapping_bodies() and recruit_timer >= recruit_trigger and not get_tree().get_nodes_in_group("non_military_humans").is_empty() and not detected_humans.is_empty():
+	if not get_tree().get_nodes_in_group("non_military_humans").is_empty() and not detected_humans.is_empty():
 		#get nearest human, actually
 		direction = (get_nearest_zombie(get_tree().get_nodes_in_group("non_military_humans"), global_position) - global_position).normalized()
 		#print("I'm Recruiting!")

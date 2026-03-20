@@ -128,7 +128,9 @@ text = "Volume"
 
 [node name="MasterVolume" type="HSlider" parent="CanvasLayer/VBoxSettings" unique_id=537182515]
 layout_mode = 2
-value = 80.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 tick_count = 100
 ticks_on_borders = true
 
@@ -180,5 +182,6 @@ position = Vector2(408, 328)
 [connection signal="pressed" from="CanvasLayer/VBoxMain/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxMain/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxMain/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="drag_ended" from="CanvasLayer/VBoxSettings/MasterVolume" to="." method="_on_master_volume_drag_ended"]
 [connection signal="item_selected" from="CanvasLayer/VBoxSettings/ResolutionOptions" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/VBoxSettings/BackButton" to="." method="_on_back_button_pressed"]

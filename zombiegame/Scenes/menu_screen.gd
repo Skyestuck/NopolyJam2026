@@ -38,3 +38,9 @@ func _on_option_button_item_selected(index: int) -> void:
 func _on_back_button_pressed() -> void:
 	$CanvasLayer/VBoxMain.visible = true
 	$CanvasLayer/VBoxSettings.visible = false
+
+
+func _on_master_volume_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		Score.master_volume = $CanvasLayer/VBoxSettings/MasterVolume.value
+	print(Score.master_volume)

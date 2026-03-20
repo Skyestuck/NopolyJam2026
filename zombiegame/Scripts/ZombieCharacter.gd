@@ -20,7 +20,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	print($AudioListener2D.current)
+	#print($AudioListener2D.current)
 	if is_in_group("player"):
 		var input := Input.get_vector("MoveLeft","MoveRight","MoveUp","MoveDown")
 		SPEED = default_speed
@@ -148,8 +148,8 @@ func _do_replace_with_human() -> void:
 	else:
 		pass
 	
-	print("Spawned human at: ", human.global_position)
-	print("I am at: ", self.global_position)
+	#print("Spawned human at: ", human.global_position)
+	#print("I am at: ", self.global_position)
 	parent.move_child(human, get_index())
 	Score.zombie_count -= 1
 	queue_free()
