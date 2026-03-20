@@ -34,7 +34,7 @@ var chase_speed := 80.0
 var small_vision = 0.6
 var regular_vision = 1.0
 
-@export var recruit_timer = 50.0
+@export var recruit_timer = 0.0
 var recruit_trigger = 60.0
 var detected_humans = []
 

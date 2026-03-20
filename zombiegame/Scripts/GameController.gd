@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		cam.global_position = players[0].global_position
+		cam.zoom = Vector2i(2,2)
 		
 		
 	var zombies = get_tree().get_nodes_in_group("all_players")

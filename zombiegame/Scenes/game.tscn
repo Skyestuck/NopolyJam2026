@@ -108,10 +108,10 @@ position = Vector2(883, 643)
 position = Vector2(459, 845)
 
 [node name="Human5" parent="." unique_id=1697207165 instance=ExtResource("5_wowpa")]
-position = Vector2(410, 535)
+position = Vector2(520, 824)
 
 [node name="Human6" parent="." unique_id=992142197 instance=ExtResource("5_wowpa")]
-position = Vector2(450, 284)
+position = Vector2(496, 128)
 
 [node name="Building" parent="." unique_id=1351275348 instance=ExtResource("6_i6g32")]
 position = Vector2(256, 240)
@@ -141,49 +141,49 @@ position = Vector2(1024, 640)
 position = Vector2(1024, 1024)
 
 [node name="Human7" parent="." unique_id=1321823013 instance=ExtResource("5_wowpa")]
-position = Vector2(1230, 1224)
+position = Vector2(400, 656)
 
 [node name="Human8" parent="." unique_id=2084170476 instance=ExtResource("5_wowpa")]
-position = Vector2(1189, 1208)
+position = Vector2(1168, 1152)
 
 [node name="Human9" parent="." unique_id=39377018 instance=ExtResource("5_wowpa")]
-position = Vector2(1236, 1174)
+position = Vector2(848, 992)
 
 [node name="Human10" parent="." unique_id=1955579177 instance=ExtResource("5_wowpa")]
-position = Vector2(1198, 1246)
+position = Vector2(1096, 1112)
 
 [node name="Human11" parent="." unique_id=2116587696 instance=ExtResource("5_wowpa")]
-position = Vector2(1208, 1178)
+position = Vector2(1168, 1064)
 
 [node name="Human12" parent="." unique_id=2055029496 instance=ExtResource("5_wowpa")]
-position = Vector2(111, 1181)
+position = Vector2(120, 808)
 
 [node name="Human13" parent="." unique_id=2018898229 instance=ExtResource("5_wowpa")]
-position = Vector2(188, 1226)
+position = Vector2(192, 1200)
 
 [node name="Human14" parent="." unique_id=1071282310 instance=ExtResource("5_wowpa")]
-position = Vector2(170, 1164)
+position = Vector2(168, 1144)
 
 [node name="Human15" parent="." unique_id=1499620247 instance=ExtResource("5_wowpa")]
-position = Vector2(138, 1226)
+position = Vector2(232, 1152)
 
 [node name="Human16" parent="." unique_id=1621095583 instance=ExtResource("5_wowpa")]
-position = Vector2(130, 1138)
+position = Vector2(96, 848)
 
 [node name="Human17" parent="." unique_id=1080007880 instance=ExtResource("5_wowpa")]
-position = Vector2(89, 1224)
+position = Vector2(80, 800)
 
 [node name="Human18" parent="." unique_id=612771662 instance=ExtResource("5_wowpa")]
-position = Vector2(419, 695)
+position = Vector2(480, 800)
 
 [node name="Human19" parent="." unique_id=605518765 instance=ExtResource("5_wowpa")]
 position = Vector2(337, 323)
 
 [node name="Human20" parent="." unique_id=599135620 instance=ExtResource("5_wowpa")]
-position = Vector2(381, 339)
+position = Vector2(512, 344)
 
 [node name="Human21" parent="." unique_id=1623859178 instance=ExtResource("5_wowpa")]
-position = Vector2(372, 258)
+position = Vector2(552, 128)
 
 [node name="Human22" parent="." unique_id=309228504 instance=ExtResource("5_wowpa")]
 position = Vector2(233, 405)
@@ -195,22 +195,22 @@ position = Vector2(246, 462)
 position = Vector2(292, 429)
 
 [node name="Human25" parent="." unique_id=506217414 instance=ExtResource("5_wowpa")]
-position = Vector2(1159, 329)
+position = Vector2(1192, 472)
 
 [node name="Human26" parent="." unique_id=1925295591 instance=ExtResource("5_wowpa")]
-position = Vector2(1100, 391)
+position = Vector2(1152, 520)
 
 [node name="Human27" parent="." unique_id=610303242 instance=ExtResource("5_wowpa")]
-position = Vector2(981, 347)
+position = Vector2(1128, 472)
 
 [node name="Military" parent="." unique_id=256509879 instance=ExtResource("7_1l0tm")]
-position = Vector2(1003, 1159)
+position = Vector2(928, 1152)
 
 [node name="Military2" parent="." unique_id=22095729 instance=ExtResource("7_1l0tm")]
-position = Vector2(352, 1112)
+position = Vector2(280, 904)
 
 [node name="Military3" parent="." unique_id=122293051 instance=ExtResource("7_1l0tm")]
-position = Vector2(168, 216)
+position = Vector2(360, 176)
 
 [node name="Military4" parent="." unique_id=277832072 instance=ExtResource("7_1l0tm")]
 position = Vector2(1143, 119)
