@@ -8,7 +8,12 @@ var ZombieScene := preload("res://Scenes/Zombie.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$CanvasLayer/GameOver.visible = false
+	Score.score = 0.0
+	Score.score_rate = 1
+	Score.score_multiplier = 1
+	Score.zombie_count = 1
+	Score.player_alive = true # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,10 +24,10 @@ func _process(delta: float) -> void:
 		#print("All Players: ",get_tree().get_nodes_in_group("all_players"))
 		#print("THE Player: ",get_tree().get_nodes_in_group("player"))
 	#
-	#if Input.is_action_just_pressed("Action1"):
-		#var Zombie = ZombieScene.instantiate()
-		#Zombie.position = get_global_mouse_position()
-		#add_child(Zombie)
+	if Input.is_action_just_pressed("Action1"):
+		var Zombie = ZombieScene.instantiate()
+		Zombie.position = get_global_mouse_position()
+		add_child(Zombie)
 	
 	#Actual Game Functionality
 	var players = get_tree().get_nodes_in_group("player")
@@ -38,6 +43,7 @@ func _process(delta: float) -> void:
 	if player.size() == 0 and zombies.size() != 0:
 			var new_player = zombies[0]
 			new_player.add_to_group("player")
+			new_player.get_node("AudioListener2D").current = true
 			#print("Assigned new player:", new_player.name)
 	
 
@@ -45,5 +51,10 @@ func _process(delta: float) -> void:
 
 func game_over():
 	Score.player_alive = false
+	$CanvasLayer/GameOver.visible = true
 	print("GAME OVER!")
 	#pass
+
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene() # Replace with function body.

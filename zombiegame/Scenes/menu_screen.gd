@@ -19,7 +19,6 @@ func _on_play_button_pressed() -> void:
 func _on_settings_button_pressed() -> void:
 	$CanvasLayer/VBoxMain.visible = false
 	$CanvasLayer/VBoxSettings.visible = true
-	pass # Replace with function body.
 
 
 func _on_quit_button_pressed() -> void:
@@ -35,3 +34,7 @@ func _on_option_button_item_selected(index: int) -> void:
 		2:
 			DisplayServer.window_set_size(Vector2i(1920,1080))
 	
+
+func _on_back_button_pressed() -> void:
+	$CanvasLayer/VBoxMain.visible = true
+	$CanvasLayer/VBoxSettings.visible = false

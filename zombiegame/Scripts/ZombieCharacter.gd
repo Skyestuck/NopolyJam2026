@@ -15,22 +15,22 @@ func _ready():
 	add_to_group("all_players")
 	if get_tree().get_nodes_in_group("player").is_empty():
 		add_to_group("player")
-		#print("I'm player")
-	else:
-		#print("Player exists")
-		pass
+
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	print($AudioListener2D.current)
 	if is_in_group("player"):
 		var input := Input.get_vector("MoveLeft","MoveRight","MoveUp","MoveDown")
 		SPEED = default_speed
 		sprite_facing = get_direction(input)
 		lifetime += 1
 		velocity = input * SPEED
+		$AudioListener2D.current = true
 		move_and_slide()
 	else:
+		$AudioListener2D.current = false
 		if $TerrorRadius.has_overlapping_bodies():
 			direction = (get_nearest_human($TerrorRadius.get_overlapping_bodies(), global_position) - global_position).normalized()
 			velocity = direction * SPEED

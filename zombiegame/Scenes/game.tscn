@@ -47,6 +47,9 @@ texture = ExtResource("4_h4fw4")
 [sub_resource type="TileSet" id="TileSet_o5yvi"]
 sources/0 = SubResource("TileSetAtlasSource_ldgsr")
 
+[sub_resource type="LabelSettings" id="LabelSettings_ldgsr"]
+font_size = 32
+
 [node name="Game" type="Node2D" unique_id=1650194136]
 script = ExtResource("1_3dryh")
 
@@ -88,7 +91,7 @@ position = Vector2(640, 2048)
 scale = Vector2(12, 12)
 
 [node name="Zombie" parent="." unique_id=180360345 instance=ExtResource("1_ebmjs")]
-position = Vector2(656, 552)
+position = Vector2(657, 556)
 
 [node name="CureZone" parent="." unique_id=2050805564 instance=ExtResource("8_ldgsr")]
 position = Vector2(24, 24)
@@ -235,3 +238,28 @@ script = ExtResource("9_h4fw4")
 [node name="Zombies" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=407793761]
 layout_mode = 2
 script = ExtResource("10_ldgsr")
+
+[node name="GameOver" type="VBoxContainer" parent="CanvasLayer" unique_id=1700005837]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -22.5
+offset_right = 87.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver" unique_id=1162915351]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_ldgsr")
+
+[node name="Restart" type="Button" parent="CanvasLayer/GameOver" unique_id=1065728766]
+layout_mode = 2
+text = "Restart?"
+
+[connection signal="pressed" from="CanvasLayer/GameOver/Restart" to="." method="_on_restart_pressed"]

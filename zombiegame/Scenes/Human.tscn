@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bsgrw5o11fqn7" path="res://Scripts/detection_los.gd" id="3_3kmkr"]
 [ext_resource type="Texture2D" uid="uid://xda1cxnn2xga" path="res://Sprites/Alert.png" id="5_3kmkr"]
 [ext_resource type="Texture2D" uid="uid://dl3xvkixu2skk" path="res://Sprites/Intrigue.png" id="6_a7uhl"]
+[ext_resource type="AudioStream" uid="uid://do7xrd2sjbb6u" path="res://Sounds/Alert.mp3" id="7_5obn5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lr0no"]
 radius = 6.0
@@ -90,5 +91,9 @@ offset = Vector2(0, -15)
 [node name="Suspicion" type="Sprite2D" parent="." unique_id=93302382]
 texture = ExtResource("6_a7uhl")
 offset = Vector2(0, -15)
+
+[node name="FleeSFX" type="AudioStreamPlayer2D" parent="." unique_id=2121723294]
+stream = ExtResource("7_5obn5")
+max_distance = 250.0
 
 [connection signal="body_entered" from="ConversionArea" to="ConversionArea" method="_on_body_entered"]

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://xda1cxnn2xga" path="res://Sprites/Alert.png" id="5_k3i8d"]
 [ext_resource type="Texture2D" uid="uid://bqtf86wsubq1a" path="res://Sprites/Cure.png" id="6_5csn2"]
 [ext_resource type="Texture2D" uid="uid://dl3xvkixu2skk" path="res://Sprites/Intrigue.png" id="6_wj52e"]
+[ext_resource type="AudioStream" uid="uid://do7xrd2sjbb6u" path="res://Sounds/Alert.mp3" id="8_80nec"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lr0no"]
 radius = 6.0
@@ -111,6 +112,9 @@ offset = Vector2(0, -15)
 position = Vector2(0, -1)
 texture = ExtResource("6_5csn2")
 offset = Vector2(0, -15)
+
+[node name="FleeSFX" type="AudioStreamPlayer2D" parent="." unique_id=1120317779]
+stream = ExtResource("8_80nec")
 
 [connection signal="body_entered" from="CuringArea" to="CuringArea" method="_on_body_entered"]
 [connection signal="body_entered" from="RecruitingArea" to="RecruitingArea" method="_on_body_entered"]

@@ -130,6 +130,11 @@ func get_terror(delta) -> void:
 
 
 func set_state(new_state: AI_Mode):
+	if state != new_state:
+		if new_state == AI_Mode.FLEE:
+			$FleeSFX.pitch_scale = randf_range(0.95,1.05)
+			$FleeSFX.play()
+	
 	state = new_state
 
 func wander_state(delta):
