@@ -14,6 +14,9 @@ func _ready() -> void:
 	Score.score_multiplier = 1
 	Score.zombie_count = 1
 	Score.player_alive = true # Replace with function body.
+	$HighIntPlayer.volume_db = 0.0
+	$MedIntPlayer.volume_db = -80.0
+	$LowIntPlayer.volume_db = -80.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,6 +49,26 @@ func _process(delta: float) -> void:
 			new_player.add_to_group("player")
 			new_player.get_node("AudioListener2D").current = true
 			#print("Assigned new player:", new_player.name)
+	
+	#Music Control
+	
+	if Score.zombie_count == 1:
+		$HighIntPlayer.volume_db = 0.0
+		$MedIntPlayer.volume_db = -80.0
+		$LowIntPlayer.volume_db = -80.0
+		print("play high")
+	elif Score.zombie_count < 5:
+		$HighIntPlayer.volume_db = -80.0
+		$MedIntPlayer.volume_db = 0.0
+		$LowIntPlayer.volume_db = -80.0
+		print("play medium")
+	elif Score.zombie_count >= 5:
+		$HighIntPlayer.volume_db = -80.0
+		$MedIntPlayer.volume_db = -80.0
+		$LowIntPlayer.volume_db = 0.0
+		print("play low")
+
+	
 	
 
 
