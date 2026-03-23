@@ -14,7 +14,7 @@ func _ready() -> void:
 	Score.score_multiplier = 1
 	Score.zombie_count = 1
 	Score.player_alive = true # Replace with function body.
-	$HighIntPlayer.volume_db = 0.0
+	$HighIntPlayer.volume_db = -20.0
 	$MedIntPlayer.volume_db = -80.0
 	$LowIntPlayer.volume_db = -80.0
 
@@ -27,10 +27,10 @@ func _process(delta: float) -> void:
 		#print("All Players: ",get_tree().get_nodes_in_group("all_players"))
 		#print("THE Player: ",get_tree().get_nodes_in_group("player"))
 	#
-	if Input.is_action_just_pressed("Action1"):
-		var Zombie = ZombieScene.instantiate()
-		Zombie.position = get_global_mouse_position()
-		add_child(Zombie)
+	#if Input.is_action_just_pressed("Action1"):
+		#var Zombie = ZombieScene.instantiate()
+		#Zombie.position = get_global_mouse_position()
+		#add_child(Zombie)
 	
 	#Actual Game Functionality
 	var players = get_tree().get_nodes_in_group("player")
@@ -53,21 +53,20 @@ func _process(delta: float) -> void:
 	#Music Control
 	
 	if Score.zombie_count == 1:
-		$HighIntPlayer.volume_db = 0.0
+		$HighIntPlayer.volume_db = -20.0
 		$MedIntPlayer.volume_db = -80.0
 		$LowIntPlayer.volume_db = -80.0
 		print("play high")
 	elif Score.zombie_count < 5:
 		$HighIntPlayer.volume_db = -80.0
-		$MedIntPlayer.volume_db = 0.0
+		$MedIntPlayer.volume_db = -20.0
 		$LowIntPlayer.volume_db = -80.0
 		print("play medium")
 	elif Score.zombie_count >= 5:
 		$HighIntPlayer.volume_db = -80.0
 		$MedIntPlayer.volume_db = -80.0
-		$LowIntPlayer.volume_db = 0.0
+		$LowIntPlayer.volume_db =-20.0
 		print("play low")
-
 	
 	
 
